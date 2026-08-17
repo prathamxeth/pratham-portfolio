@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prathmesh Upadhyay · Portfolio
 
-## Getting Started
+> Android & Full-Stack Engineer · CTO @FinRein & Developer @PalZee · BS in Data Science @IIT Madras.
 
-First, run the development server:
+A high-performance, multi-page portfolio built with **Next.js 16 (App Router)**, **Turbopack**, **Tailwind CSS v4**, and a **LiquidGL-inspired Liquid Glass Design System**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ⚡ Overview
+
+- **Zero-Latency Native Engineering**: Showcasing native Android systems, real-time media pipelines (CameraX, ExoPlayer, state-latch keyframe extraction), and local-first architectures.
+- **Liquid Glass Interface**: Crystal refraction, sub-pixel specular rim highlights, and fluid sliding tab indicators.
+- **Adaptive System Color Palette**: Automatically synchronizes with device theme preferences:
+  - **Dark Mode**: `#09090B` canvas with cyan (`#17C0FD`) and peach (`#FF9689`) accents.
+  - **Light Mode**: `#FDFDFD` canvas with high-contrast typography and cobalt (`#0279BE`) highlights.
+- **Static Export & Edge Delivery**: Fully prerendered static build deployed automatically to GitHub Pages via GitHub Actions.
+
+---
+
+## 🗂️ Architecture & Routes
+
+```
+pratham-portfolio/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx         # Root layout with ThemeProvider, ambient grid, dock & footer
+│   │   ├── page.tsx           # Home: hero, core metrics, featured work, Palzee code engine
+│   │   ├── about/page.tsx     # About: bio, work history, IIT Madras studies, technical skills
+│   │   ├── work/page.tsx      # Work: Android native & web systems with LiquidTabs filters
+│   │   ├── contact/page.tsx   # Contact: direct channels & instant note dispatch
+│   │   └── globals.css        # Liquid glass refraction tokens & specular shaders
+│   ├── components/
+│   │   ├── HeaderNav.tsx      # Floating liquid glass navigation dock with live IST clock
+│   │   ├── LiquidTabs.tsx     # Morphing spring pill tabs
+│   │   ├── TerminalMatrix.tsx # Palzee design, architecture, and engine specs
+│   │   ├── ThemeProvider.tsx  # Automatic device theme synchronization
+│   │   └── Footer.tsx         # Minimalist footer with local metadata and social channels
+│   └── data/
+│       └── portfolioData.ts   # Central typed data schema
+├── .github/workflows/
+│   └── deploy.yml             # GitHub Actions automated static export & deployment
+└── next.config.ts             # Static export configuration (output: 'export')
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Technology Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Domain | Technologies |
+| :--- | :--- |
+| **Framework** | Next.js 16 (App Router, Turbopack, React 19) |
+| **Styling** | Tailwind CSS v4, Liquid Glass CSS Shaders |
+| **Icons & Motion** | Lucide React, Canvas Confetti |
+| **Deployment** | GitHub Pages (Automated CI/CD via GitHub Actions) |
+| **Native Mobile** | Kotlin 2.0+, Jetpack Compose, CameraX, Media3, Room, Supabase |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
+- Node.js 20+
+- npm / yarn / pnpm
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+```bash
+# Clone the repository
+git clone https://github.com/prathamxeth/pratham-portfolio.git
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Navigate into directory
+cd pratham-portfolio
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+```
+
+Visit `http://localhost:3000` in your browser.
+
+### Production Build & Static Export
+
+```bash
+# Build optimized static export to /out
+npm run build
+```
+
+---
+
+## 🌐 Connect
+
+- **GitHub**: [@prathamxeth](https://github.com/prathamxeth)
+- **X (Twitter)**: [@0xBlurr](https://x.com/0xBlurr)
+- **LinkedIn**: [Prathmesh Upadhyay](https://www.linkedin.com/in/prathmesh-upadhyay-11a5a732a/)
+- **Email**: [prathamup123@gmail.com](mailto:prathamup123@gmail.com)
+
+---
+
+## 📄 License
+
+MIT © 2026 [Prathmesh Upadhyay](https://github.com/prathamxeth)
