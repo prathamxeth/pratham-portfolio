@@ -8,17 +8,13 @@ import {
   User, 
   Briefcase, 
   Mail, 
-  Sun, 
-  Moon, 
   Clock, 
   Globe
 } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 
 export default function HeaderNav() {
   const pathname = usePathname();
-  const { resolvedTheme, toggleTheme } = useTheme();
   const [timeString, setTimeString] = useState("");
 
   useEffect(() => {
@@ -69,7 +65,7 @@ export default function HeaderNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                 isActive
                   ? "bg-(--liquid-active-bg) border border-(--liquid-active-border) text-(--neutral-strong) shadow-sm font-semibold"
                   : "text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg)"
@@ -80,21 +76,6 @@ export default function HeaderNav() {
             </Link>
           );
         })}
-
-        <div className="h-4 w-px bg-(--neutral-border) mx-1" />
-
-        {/* Liquid Theme Toggle Button */}
-        <button
-          onClick={toggleTheme}
-          aria-label="Toggle Theme"
-          className="p-2 rounded-full text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg) active:scale-95 transition-all"
-        >
-          {resolvedTheme === "dark" ? (
-            <Sun className="w-3.5 h-3.5 text-(--brand-peach)" />
-          ) : (
-            <Moon className="w-3.5 h-3.5 text-(--brand-primary)" />
-          )}
-        </button>
       </nav>
 
       {/* Right: Live IST Clock Liquid Capsule */}

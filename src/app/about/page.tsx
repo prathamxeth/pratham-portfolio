@@ -26,8 +26,8 @@ export default function AboutPage() {
         {/* Left Sticky Avatar & Profile Summary Column */}
         <div className="md:w-56 shrink-0 md:sticky md:top-24 flex flex-col items-center md:items-start text-center md:text-left gap-4">
           
-          {/* Avatar with Borderless Liquid Capsule */}
-          <div className="w-36 h-36 rounded-full overflow-hidden shadow-2xl relative bg-zinc-900">
+          {/* Avatar with Liquid Glass Specular Border */}
+          <div className="w-36 h-36 rounded-full overflow-hidden border border-(--liquid-glass-border) shadow-2xl relative bg-zinc-900">
             <Image
               src={profile.avatar}
               alt={profile.name}
@@ -49,7 +49,7 @@ export default function AboutPage() {
             {profile.languages.map((lang) => (
               <span
                 key={lang}
-                className="magic-tag px-3 py-1 rounded-full text-xs"
+                className="magic-tag px-2.5 py-0.5 rounded-full text-xs"
               >
                 {lang}
               </span>
@@ -69,7 +69,7 @@ export default function AboutPage() {
               href={profile.whatsappLink}
               target="_blank"
               rel="noreferrer"
-              className="liquid-button inline-flex items-center gap-2 px-4 py-2 rounded-full text-(--brand-primary) text-xs font-medium hover:scale-[1.02] active:scale-95 transition-all shadow-sm"
+              className="liquid-button inline-flex items-center gap-2 p-1.5 pl-3.5 rounded-full text-(--brand-primary) text-xs font-medium hover:scale-[1.02] active:scale-95 transition-all shadow-sm"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Schedule a call / WhatsApp</span>
@@ -94,7 +94,7 @@ export default function AboutPage() {
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
-                className="liquid-button px-4 py-2 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
+                className="liquid-button px-3.5 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <GithubIcon className="w-3.5 h-3.5" />
                 <span>GitHub</span>
@@ -104,7 +104,7 @@ export default function AboutPage() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="liquid-button px-4 py-2 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
+                className="liquid-button px-3.5 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
                 <span>LinkedIn</span>
@@ -114,7 +114,7 @@ export default function AboutPage() {
                 href={profile.x}
                 target="_blank"
                 rel="noreferrer"
-                className="liquid-button px-4 py-2 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
+                className="liquid-button px-3.5 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <TwitterXIcon className="w-3.5 h-3.5" />
                 <span>X (Twitter)</span>
@@ -122,7 +122,7 @@ export default function AboutPage() {
 
               <a
                 href={`mailto:${profile.email}`}
-                className="liquid-button px-4 py-2 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
+                className="liquid-button px-3.5 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <span className="text-xs">✉️</span>
                 <span>Email</span>
@@ -137,15 +137,15 @@ export default function AboutPage() {
           </section>
 
           {/* Section: Work Experience */}
-          <section id="Work Experience" className="space-y-6 pt-4">
+          <section id="Work Experience" className="space-y-6 pt-6 border-t border-(--neutral-border)">
             <h2 className="text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
               <Briefcase className="w-4 h-4 text-(--brand-primary)" />
               <span>Work Experience</span>
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {experiences.map((exp) => (
-                <div key={exp.company} className="liquid-glass p-6 sm:p-7 rounded-3xl space-y-3">
+                <div key={exp.company} className="liquid-glass p-6 rounded-3xl space-y-2.5">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="font-bold text-base text-(--neutral-strong)">
@@ -155,7 +155,7 @@ export default function AboutPage() {
                       <span className="text-xs font-semibold text-(--brand-primary)">
                         {exp.role}
                       </span>
-                      <span className="magic-tag px-2.5 py-0.5 rounded-full text-[10px]">
+                      <span className="magic-tag px-2 py-0.5 rounded text-[10px]">
                         {exp.badge}
                       </span>
                     </div>
@@ -184,7 +184,7 @@ export default function AboutPage() {
                     {exp.tech.map((t) => (
                       <span
                         key={t}
-                        className="magic-tag px-2.5 py-0.5 rounded-full text-[11px]"
+                        className="magic-tag px-2 py-0.5 rounded text-[11px]"
                       >
                         {t}
                       </span>
@@ -196,7 +196,7 @@ export default function AboutPage() {
           </section>
 
           {/* Section: Studies */}
-          <section id="Studies" className="space-y-6 pt-4">
+          <section id="Studies" className="space-y-6 pt-6 border-t border-(--neutral-border)">
             <h2 className="text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
               <GraduationCap className="w-4 h-4 text-(--brand-peach)" />
               <span>Studies</span>
@@ -204,7 +204,7 @@ export default function AboutPage() {
 
             <div className="space-y-6">
               {education.map((edu) => (
-                <div key={edu.name} className="liquid-glass p-6 sm:p-7 rounded-3xl space-y-2">
+                <div key={edu.name} className="liquid-glass p-6 rounded-3xl space-y-1.5">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                     <h3 className="font-bold text-base text-(--neutral-strong)">
                       {edu.name}
@@ -227,7 +227,7 @@ export default function AboutPage() {
           </section>
 
           {/* Section: Technical Skills */}
-          <section id="Technical skills" className="space-y-6 pt-4">
+          <section id="Technical skills" className="space-y-6 pt-6 border-t border-(--neutral-border)">
             <h2 className="text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
               <Cpu className="w-4 h-4 text-(--brand-secondary)" />
               <span>Technical skills</span>
@@ -248,7 +248,7 @@ export default function AboutPage() {
                     {skill.tags.map((tag) => (
                       <span
                         key={tag.name}
-                        className="magic-tag px-3 py-1 rounded-full text-xs"
+                        className="magic-tag px-2.5 py-0.5 rounded-full text-xs"
                       >
                         {tag.name}
                       </span>

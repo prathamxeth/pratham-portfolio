@@ -33,7 +33,7 @@ export default function WorkPage() {
     <div className="max-w-4xl mx-auto px-6 py-12 md:py-16 space-y-12">
       
       {/* Header & Liquid Filter Tabs */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-2">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-6 border-b border-(--neutral-border)">
         <div className="space-y-1">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-(--neutral-strong)">
             Selected Work
@@ -57,7 +57,7 @@ export default function WorkPage() {
         {filteredProjects.map((project) => (
           <div
             key={project.id}
-            className="liquid-glass p-6 sm:p-8 rounded-3xl space-y-5 relative overflow-hidden group shadow-lg"
+            className="liquid-glass p-6 sm:p-8 rounded-3xl space-y-5 relative overflow-hidden group"
           >
             {/* Top Bar: Category & Metric */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -66,7 +66,7 @@ export default function WorkPage() {
                 {project.category}
               </span>
 
-              <span className="magic-tag px-3.5 py-1 rounded-full text-xs font-mono text-emerald-600 dark:text-emerald-400">
+              <span className="magic-tag px-3 py-1 rounded-full text-xs font-mono text-emerald-600 dark:text-emerald-400">
                 {project.metrics}
               </span>
             </div>
@@ -85,12 +85,12 @@ export default function WorkPage() {
             </div>
 
             {/* Tech Tags & Links */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-3">
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-(--neutral-border)">
               <div className="flex flex-wrap gap-1.5">
                 {project.tags.map((tag) => (
                   <span
                     key={tag.name}
-                    className="magic-tag px-3 py-1 rounded-full text-xs font-mono"
+                    className="magic-tag px-2.5 py-0.5 rounded-full text-xs font-mono"
                   >
                     {tag.name}
                   </span>

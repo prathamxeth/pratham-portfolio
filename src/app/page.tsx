@@ -59,8 +59,8 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Profile Avatar with Borderless Liquid Capsule */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shadow-xl relative bg-zinc-900 shrink-0">
+          {/* Profile Avatar with Liquid Glass Specular Rim */}
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border border-(--liquid-glass-border) shadow-xl relative bg-zinc-900 shrink-0">
             <Image
               src={profile.avatar}
               alt={profile.name}
@@ -77,7 +77,7 @@ export default function HomePage() {
           {profile.tagline}
         </p>
 
-        {/* Borderless Liquid Glass Action Buttons */}
+        {/* Liquid Glass Action Buttons */}
         <div className="flex flex-wrap items-center gap-3">
           <Link
             href="/work"
@@ -122,7 +122,7 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Borderless Liquid Glass Metric Capsules (4-Grid) */}
+        {/* Liquid Glass Metric Capsules (4-Grid) */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-4">
           <div className="liquid-glass p-4 rounded-3xl space-y-1">
             <div className="flex items-center gap-1.5 text-(--brand-primary)">
@@ -163,7 +163,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* Featured Projects Borderless Preview Section */}
+      {/* Featured Projects Liquid Preview Section */}
       <section className="space-y-6">
         <div className="flex items-center justify-between">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-(--neutral-strong)">
@@ -205,7 +205,7 @@ export default function HomePage() {
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-3">
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-(--neutral-border)">
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <span
