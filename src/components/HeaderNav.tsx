@@ -49,18 +49,18 @@ export default function HeaderNav() {
   return (
     <header className="sticky top-0 inset-x-0 z-50 py-3 px-4 sm:px-8 flex items-center justify-between pointer-events-none">
       
-      {/* Left: Timezone / City with Borderless Liquid Capsule */}
+      {/* Left: Timezone / City with Liquid Glass Capsule */}
       <div className="flex-1 flex items-center gap-2 text-xs font-mono font-medium text-(--neutral-medium) pointer-events-auto hidden md:flex">
-        <div className="liquid-icon-btn px-3.5 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
+        <div className="liquid-icon-btn px-3 py-1 rounded-full text-xs gap-1.5 font-mono">
           <Globe className="w-3.5 h-3.5 text-(--brand-primary)" />
           <span>{PORTFOLIO_DATA.profile.timezone}</span>
         </div>
       </div>
 
-      {/* Center: Borderless LiquidGL Nav Dock */}
+      {/* Center: LiquidGL Frosted Nav Dock */}
       <nav 
         aria-label="Main Navigation"
-        className="pointer-events-auto flex items-center gap-1 p-1.5 rounded-full magic-header-dock shadow-md"
+        className="pointer-events-auto flex items-center gap-1 p-1 rounded-full magic-header-dock"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -69,9 +69,9 @@ export default function HeaderNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                 isActive
-                  ? "bg-(--liquid-active-bg) text-(--neutral-strong) shadow-sm font-semibold"
+                  ? "bg-(--liquid-active-bg) border border-(--liquid-active-border) text-(--neutral-strong) shadow-sm font-semibold"
                   : "text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg)"
               }`}
             >
@@ -81,11 +81,13 @@ export default function HeaderNav() {
           );
         })}
 
+        <div className="h-4 w-px bg-(--neutral-border) mx-1" />
+
         {/* Liquid Theme Toggle Button */}
         <button
           onClick={toggleTheme}
           aria-label="Toggle Theme"
-          className="p-2 ml-0.5 rounded-full text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg) active:scale-95 transition-all"
+          className="p-2 rounded-full text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg) active:scale-95 transition-all"
         >
           {resolvedTheme === "dark" ? (
             <Sun className="w-3.5 h-3.5 text-(--brand-peach)" />
@@ -95,9 +97,9 @@ export default function HeaderNav() {
         </button>
       </nav>
 
-      {/* Right: Live IST Clock Borderless Liquid Capsule */}
+      {/* Right: Live IST Clock Liquid Capsule */}
       <div className="flex-1 flex items-center justify-end gap-2 text-xs font-mono font-medium text-(--neutral-strong) pointer-events-auto hidden md:flex">
-        <div className="liquid-icon-btn px-3.5 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
+        <div className="liquid-icon-btn px-3 py-1 rounded-full text-xs gap-1.5 font-mono">
           <Clock className="w-3.5 h-3.5 text-(--brand-secondary)" />
           <span>{timeString || "00:00:00"}</span>
         </div>

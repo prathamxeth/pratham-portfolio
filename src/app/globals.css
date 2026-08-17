@@ -1,31 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Light Theme Palette: Deep Black Bold Titles, Neutral Grey Body */
+  /* LiquidGL Clean Light Theme Palette */
   --background: #fdfdfd;
   --page-bg: #fdfdfd;
-  --foreground: #000000;
-  --neutral-strong: #000000;
+  --foreground: #09090b;
+  --neutral-strong: #09090b;
   --neutral-medium: #52525b;
-  --neutral-weak: #71717a;
+  --neutral-weak: #a1a1aa;
+  --neutral-border: rgba(0, 0, 0, 0.08);
+  --neutral-border-strong: rgba(0, 0, 0, 0.16);
+  --neutral-alpha-weak: rgba(0, 0, 0, 0.03);
+  --neutral-alpha-medium: rgba(0, 0, 0, 0.06);
   
-  /* Pure Borderless Liquid Glass (Light) */
+  /* LiquidGL Refraction Tokens (Light) */
   --liquid-glass-bg: rgba(255, 255, 255, 0.45);
-  --liquid-glass-border: transparent;
-  --liquid-glass-bevel: none;
-  --liquid-glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  --liquid-glass-shadow-hover: 0 10px 30px rgba(2, 121, 190, 0.08);
+  --liquid-glass-border: rgba(0, 0, 0, 0.08);
+  --liquid-glass-bevel: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.03);
+  --liquid-glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  --liquid-glass-shadow-hover: 0 18px 45px rgba(2, 121, 190, 0.12), 0 0 0 1px rgba(2, 121, 190, 0.25);
   
-  /* Active Crystal Pill (Light) */
-  --liquid-active-bg: rgba(0, 0, 0, 0.06);
-  --liquid-active-border: transparent;
-  --liquid-active-text: #000000;
+  /* Active Liquid Indicator (Light) */
+  --liquid-active-bg: rgba(0, 0, 0, 0.07);
+  --liquid-active-border: rgba(0, 0, 0, 0.12);
+  --liquid-active-text: #09090b;
   
-  /* Primary Liquid Pill Button (Light) */
-  --liquid-primary-bg: rgba(0, 0, 0, 0.07);
-  --liquid-primary-text: #000000;
-  --liquid-primary-border: transparent;
-  --liquid-primary-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  /* Primary Liquid Button (Light) */
+  --liquid-primary-bg: rgba(9, 9, 11, 0.88);
+  --liquid-primary-text: #ffffff;
+  --liquid-primary-border: rgba(255, 255, 255, 0.25);
+  --liquid-primary-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 1.5px rgba(255, 255, 255, 0.35);
 
   /* Brand Accents */
   --brand-primary: #0279be;
@@ -33,40 +37,42 @@
   --brand-accent: #e90507;
   --brand-cyan: #17c0fd;
   --brand-peach: #ff9689;
-  --dots-color: rgba(2, 121, 190, 0.06);
-  --neutral-border: transparent;
-  --neutral-border-strong: transparent;
+  --dots-color: rgba(2, 121, 190, 0.08);
 }
 
 [data-theme="dark"],
 :root[class~="dark"],
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    /* Dark Theme Palette: Pure White Bold Titles, Clean Muted Grey Body */
+    /* LiquidGL Deep Dark Theme Palette */
     --background: #09090b;
     --page-bg: #09090b;
-    --foreground: #ffffff;
-    --neutral-strong: #ffffff;
+    --foreground: #fafafa;
+    --neutral-strong: #fafafa;
     --neutral-medium: #a1a1aa;
     --neutral-weak: #71717a;
+    --neutral-border: rgba(255, 255, 255, 0.08);
+    --neutral-border-strong: rgba(255, 255, 255, 0.18);
+    --neutral-alpha-weak: rgba(255, 255, 255, 0.03);
+    --neutral-alpha-medium: rgba(255, 255, 255, 0.06);
     
-    /* Pure Borderless Liquid Glass (Dark) */
-    --liquid-glass-bg: rgba(255, 255, 255, 0.035);
-    --liquid-glass-border: transparent;
-    --liquid-glass-bevel: none;
-    --liquid-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --liquid-glass-shadow-hover: 0 14px 40px rgba(23, 192, 253, 0.15);
+    /* LiquidGL Refraction Tokens (Dark) */
+    --liquid-glass-bg: rgba(24, 24, 27, 0.4);
+    --liquid-glass-border: rgba(255, 255, 255, 0.1);
+    --liquid-glass-bevel: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5);
+    --liquid-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    --liquid-shadow-hover: 0 20px 50px rgba(23, 192, 253, 0.2), 0 0 0 1px rgba(23, 192, 253, 0.35);
 
-    /* Active Crystal Pill (Dark) */
-    --liquid-active-bg: rgba(255, 255, 255, 0.1);
-    --liquid-active-border: transparent;
+    /* Active Liquid Indicator (Dark) */
+    --liquid-active-bg: rgba(255, 255, 255, 0.12);
+    --liquid-active-border: rgba(255, 255, 255, 0.2);
     --liquid-active-text: #ffffff;
     
-    /* Primary Liquid Pill Button (Dark) */
-    --liquid-primary-bg: rgba(255, 255, 255, 0.08);
+    /* Primary Liquid Button (Dark) */
+    --liquid-primary-bg: rgba(255, 255, 255, 0.14);
     --liquid-primary-text: #ffffff;
-    --liquid-primary-border: transparent;
-    --liquid-primary-shadow: 0 8px 24px rgba(23, 192, 253, 0.15);
+    --liquid-primary-border: rgba(255, 255, 255, 0.28);
+    --liquid-primary-shadow: 0 10px 30px rgba(23, 192, 253, 0.25), inset 0 1.5px 2px rgba(255, 255, 255, 0.35);
 
     /* Brand Accents */
     --brand-primary: #17c0fd;
@@ -74,76 +80,78 @@
     --brand-accent: #ff9689;
     --brand-cyan: #82f1fc;
     --brand-peach: #ff9689;
-    --dots-color: rgba(23, 192, 253, 0.08);
-    --neutral-border: transparent;
-    --neutral-border-strong: transparent;
+    --dots-color: rgba(23, 192, 253, 0.12);
   }
 }
 
 [data-theme="dark"] {
   --background: #09090b;
   --page-bg: #09090b;
-  --foreground: #ffffff;
-  --neutral-strong: #ffffff;
+  --foreground: #fafafa;
+  --neutral-strong: #fafafa;
   --neutral-medium: #a1a1aa;
   --neutral-weak: #71717a;
+  --neutral-border: rgba(255, 255, 255, 0.08);
+  --neutral-border-strong: rgba(255, 255, 255, 0.18);
+  --neutral-alpha-weak: rgba(255, 255, 255, 0.03);
+  --neutral-alpha-medium: rgba(255, 255, 255, 0.06);
   
-  --liquid-glass-bg: rgba(255, 255, 255, 0.035);
-  --liquid-glass-border: transparent;
-  --liquid-glass-bevel: none;
-  --liquid-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --liquid-glass-shadow-hover: 0 14px 40px rgba(23, 192, 253, 0.15);
+  --liquid-glass-bg: rgba(24, 24, 27, 0.4);
+  --liquid-glass-border: rgba(255, 255, 255, 0.1);
+  --liquid-glass-bevel: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5);
+  --liquid-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --liquid-shadow-hover: 0 20px 50px rgba(23, 192, 253, 0.2), 0 0 0 1px rgba(23, 192, 253, 0.35);
 
-  --liquid-active-bg: rgba(255, 255, 255, 0.1);
-  --liquid-active-border: transparent;
+  --liquid-active-bg: rgba(255, 255, 255, 0.12);
+  --liquid-active-border: rgba(255, 255, 255, 0.2);
   --liquid-active-text: #ffffff;
 
-  --liquid-primary-bg: rgba(255, 255, 255, 0.08);
+  --liquid-primary-bg: rgba(255, 255, 255, 0.14);
   --liquid-primary-text: #ffffff;
-  --liquid-primary-border: transparent;
-  --liquid-primary-shadow: 0 8px 24px rgba(23, 192, 253, 0.15);
+  --liquid-primary-border: rgba(255, 255, 255, 0.28);
+  --liquid-primary-shadow: 0 10px 30px rgba(23, 192, 253, 0.25), inset 0 1.5px 2px rgba(255, 255, 255, 0.35);
 
   --brand-primary: #17c0fd;
   --brand-secondary: #049ee2;
   --brand-accent: #ff9689;
   --brand-cyan: #82f1fc;
   --brand-peach: #ff9689;
-  --dots-color: rgba(23, 192, 253, 0.08);
-  --neutral-border: transparent;
-  --neutral-border-strong: transparent;
+  --dots-color: rgba(23, 192, 253, 0.12);
 }
 
 [data-theme="light"] {
   --background: #fdfdfd;
   --page-bg: #fdfdfd;
-  --foreground: #000000;
-  --neutral-strong: #000000;
+  --foreground: #09090b;
+  --neutral-strong: #09090b;
   --neutral-medium: #52525b;
-  --neutral-weak: #71717a;
+  --neutral-weak: #a1a1aa;
+  --neutral-border: rgba(0, 0, 0, 0.08);
+  --neutral-border-strong: rgba(0, 0, 0, 0.16);
+  --neutral-alpha-weak: rgba(0, 0, 0, 0.03);
+  --neutral-alpha-medium: rgba(0, 0, 0, 0.06);
   
   --liquid-glass-bg: rgba(255, 255, 255, 0.45);
-  --liquid-glass-border: transparent;
-  --liquid-glass-bevel: none;
-  --liquid-glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  --liquid-shadow-hover: 0 10px 30px rgba(2, 121, 190, 0.08);
+  --liquid-glass-border: rgba(0, 0, 0, 0.08);
+  --liquid-glass-bevel: inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.03);
+  --liquid-glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  --liquid-shadow-hover: 0 18px 45px rgba(2, 121, 190, 0.12), 0 0 0 1px rgba(2, 121, 190, 0.25);
 
-  --liquid-active-bg: rgba(0, 0, 0, 0.06);
-  --liquid-active-border: transparent;
-  --liquid-active-text: #000000;
+  --liquid-active-bg: rgba(0, 0, 0, 0.07);
+  --liquid-active-border: rgba(0, 0, 0, 0.12);
+  --liquid-active-text: #09090b;
 
-  --liquid-primary-bg: rgba(0, 0, 0, 0.07);
-  --liquid-primary-text: #000000;
-  --liquid-primary-border: transparent;
-  --liquid-primary-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  --liquid-primary-bg: rgba(9, 9, 11, 0.88);
+  --liquid-primary-text: #ffffff;
+  --liquid-primary-border: rgba(255, 255, 255, 0.25);
+  --liquid-primary-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 1.5px rgba(255, 255, 255, 0.35);
 
   --brand-primary: #0279be;
   --brand-secondary: #049ee2;
   --brand-accent: #e90507;
   --brand-cyan: #17c0fd;
   --brand-peach: #ff9689;
-  --dots-color: rgba(2, 121, 190, 0.06);
-  --neutral-border: transparent;
-  --neutral-border-strong: transparent;
+  --dots-color: rgba(2, 121, 190, 0.08);
 }
 
 html {
@@ -160,13 +168,6 @@ body {
   letter-spacing: -0.015em;
 }
 
-/* Headings Typography: Bold Pure Black in Light, Bold Pure White in Dark */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--neutral-strong);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
-
 /* Background Ambient Dots */
 .magic-bg-dots {
   position: fixed;
@@ -179,72 +180,70 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 35%, transparent 100%);
 }
 
-/* Pure Borderless Liquid Glass */
+/* LiquidGL Glass Surface */
 .liquid-glass {
   background: var(--liquid-glass-bg);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: none !important;
-  box-shadow: var(--liquid-glass-shadow);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-bevel), var(--liquid-shadow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .liquid-glass:hover {
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: var(--liquid-glass-shadow-hover);
+  box-shadow: var(--liquid-glass-bevel), var(--liquid-shadow-hover);
+  border-color: var(--brand-primary);
   transform: translateY(-1px);
 }
 
-/* Borderless Liquid Pill Button */
+/* Liquid Secondary Button */
 .liquid-button {
   background: var(--liquid-glass-bg);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: none !important;
-  box-shadow: var(--liquid-glass-shadow);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-bevel), 0 2px 10px rgba(0, 0, 0, 0.04);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .liquid-button:hover {
-  background: var(--liquid-active-bg);
-  color: var(--brand-primary);
-  box-shadow: 0 6px 18px rgba(23, 192, 253, 0.15);
-  transform: translateY(-0.5px);
+  border-color: var(--brand-primary);
+  box-shadow: var(--liquid-glass-bevel), 0 8px 20px -4px rgba(23, 192, 253, 0.25);
+  transform: translateY(-1px);
 }
 
 .liquid-button:active {
   transform: scale(0.97);
 }
 
-/* Borderless Primary Action Pill */
+/* Liquid Primary CTA Button */
 .liquid-primary-btn {
   background: var(--liquid-primary-bg);
   color: var(--liquid-primary-text);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: none !important;
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid var(--liquid-primary-border);
   box-shadow: var(--liquid-primary-shadow);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .liquid-primary-btn:hover {
-  background: var(--liquid-active-bg);
-  color: var(--brand-primary);
-  box-shadow: 0 8px 24px rgba(23, 192, 253, 0.25);
-  transform: translateY(-0.5px);
+  border-color: var(--brand-primary);
+  box-shadow: 0 12px 32px rgba(23, 192, 253, 0.4), inset 0 1.5px 2px rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
 }
 
 .liquid-primary-btn:active {
   transform: scale(0.97);
 }
 
-/* Borderless Liquid Icon Pill */
+/* Liquid Icon Button */
 .liquid-icon-btn {
   background: var(--liquid-glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: none !important;
-  box-shadow: var(--liquid-glass-shadow);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-bevel);
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -252,8 +251,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .liquid-icon-btn:hover {
+  border-color: var(--brand-primary);
   color: var(--brand-primary);
-  background: var(--liquid-active-bg);
   transform: scale(1.05);
 }
 
@@ -261,48 +260,48 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(0.95);
 }
 
-/* Borderless Floating Nav Dock */
+/* Liquid Top Navigation Dock */
 .magic-header-dock {
   background: var(--liquid-glass-bg);
-  backdrop-filter: blur(32px) saturate(190%);
-  -webkit-backdrop-filter: blur(32px) saturate(190%);
-  border: none !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-bevel), 0 16px 40px -10px rgba(0, 0, 0, 0.2);
 }
 
-/* Borderless Tag Pill */
+/* Liquid Tag */
 .magic-tag {
   background: var(--liquid-glass-bg);
   color: var(--neutral-strong);
-  border: none !important;
-  box-shadow: none;
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-bevel);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   transition: all 0.2s ease;
 }
 
 .magic-tag:hover {
+  border-color: var(--brand-primary);
   color: var(--brand-primary);
-  background: var(--liquid-active-bg);
 }
 
-/* Borderless Form Input */
+/* Liquid Form Input */
 .liquid-input {
   background: var(--liquid-glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: none !important;
-  box-shadow: none;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-bevel);
   transition: all 0.2s ease;
 }
 
 .liquid-input:focus {
-  background: var(--liquid-active-bg);
-  box-shadow: 0 0 0 2px rgba(23, 192, 253, 0.25);
+  border-color: var(--brand-primary);
+  box-shadow: var(--liquid-glass-bevel), 0 0 0 3px rgba(23, 192, 253, 0.2);
 }
 
 /* Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -310,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(128, 128, 128, 0.2);
+  background: var(--liquid-glass-border);
   border-radius: 9999px;
 }
 
