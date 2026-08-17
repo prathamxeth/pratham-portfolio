@@ -55,10 +55,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/profile.jpg" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/profile.jpg", type: "image/jpeg" },
     ],
+    shortcut: "/favicon.ico",
     apple: [
-      { url: "/profile.jpg" },
+      { url: "/profile.jpg", sizes: "180x180", type: "image/jpeg" },
     ],
   },
   twitter: {

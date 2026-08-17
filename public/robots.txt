@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+# Host
+Host: https://prathamxeth.github.io/pratham-portfolio
+
+# Sitemaps
+Sitemap: https://prathamxeth.github.io/pratham-portfolio/sitemap.xml
