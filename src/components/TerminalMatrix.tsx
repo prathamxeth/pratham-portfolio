@@ -76,11 +76,11 @@ export default function TerminalMatrix() {
         </h2>
       </div>
 
-      {/* Borderless Transparent Liquid Glass Terminal Screen Container */}
-      <div className="rounded-3xl overflow-hidden font-mono text-xs liquid-glass shadow-lg transition-all duration-300">
+      {/* Transparent Liquid Glass Terminal Screen Container */}
+      <div className="rounded-3xl overflow-hidden font-mono text-xs liquid-glass transition-all duration-300">
         
         {/* macOS Title Bar with Design | Architecture | Specs Switcher */}
-        <div className="px-5 py-3.5 flex items-center justify-between bg-(--liquid-active-bg) flex-wrap gap-2">
+        <div className="px-4 py-3 border-b border-(--neutral-border) flex items-center justify-between bg-(--neutral-alpha-weak) flex-wrap gap-2">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-[#ff5f56] opacity-80" />
             <div className="w-3 h-3 rounded-full bg-[#ffbd2e] opacity-80" />
@@ -100,7 +100,7 @@ export default function TerminalMatrix() {
 
             <button
               onClick={handleCopy}
-              className="p-2.5 rounded-full liquid-button text-(--neutral-medium) hover:text-(--neutral-strong)"
+              className="p-2 rounded-xl liquid-button text-(--neutral-medium) hover:text-(--neutral-strong)"
               title="Copy snippet"
               aria-label="Copy code snippet"
             >
@@ -129,7 +129,7 @@ export default function TerminalMatrix() {
             </pre>
           )}
 
-          <div className="mt-5 pt-3 flex items-center justify-between text-xs text-(--neutral-weak) flex-wrap gap-2">
+          <div className="mt-5 pt-3 border-t border-(--neutral-border) flex items-center justify-between text-xs text-(--neutral-weak) flex-wrap gap-2">
             <div className="flex items-center gap-2">
               <span className="text-emerald-500 font-bold">➜</span>
               <span className="text-(--brand-primary)">~/PALZEE-ANDROID</span>
