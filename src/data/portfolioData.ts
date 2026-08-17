@@ -32,6 +32,8 @@ export interface Project {
   colorAccent: string;
 }
 
+import profileAvatar from "../../public/profile.jpg";
+
 export interface SkillCategory {
   title: string;
   description: string;
@@ -43,7 +45,7 @@ export const PORTFOLIO_DATA = {
     name: "Prathmesh Upadhyay",
     preferredName: "Pratham",
     handle: "@prathamxeth",
-    avatar: "/profile.jpg",
+    avatar: profileAvatar,
     location: "Lucknow & Kanpur, India",
     timezone: "Asia/Kolkata",
     headline: "CTO @FinRein · Developer @PalZee",
