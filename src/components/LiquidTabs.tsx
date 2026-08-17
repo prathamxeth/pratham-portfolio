@@ -41,11 +41,11 @@ export default function LiquidTabs({
   return (
     <div
       ref={containerRef}
-      className={`relative inline-flex items-center p-1 rounded-2xl liquid-glass ${className}`}
+      className={`relative inline-flex items-center p-1 rounded-full liquid-glass shadow-sm ${className}`}
     >
-      {/* Morphing Liquid Indicator */}
+      {/* Liquid Morphing Borderless Indicator */}
       <div
-        className="absolute top-1 bottom-1 rounded-xl bg-[var(--neutral-strong)] shadow-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none"
+        className="absolute top-1 bottom-1 rounded-full bg-(--liquid-active-bg) shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none"
         style={{
           left: `${indicatorStyle.left}px`,
           width: `${indicatorStyle.width}px`,
@@ -61,10 +61,10 @@ export default function LiquidTabs({
             key={tab.id}
             data-tab-id={tab.id}
             onClick={() => onChange(tab.id)}
-            className={`relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-colors duration-200 ${
+            className={`relative z-10 flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium transition-colors duration-200 ${
               isActive
-                ? "text-[var(--background)] font-semibold"
-                : "text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)]"
+                ? "text-(--neutral-strong) font-semibold"
+                : "text-(--neutral-medium) hover:text-(--neutral-strong)"
             }`}
           >
             {Icon && <Icon className="w-3.5 h-3.5" />}

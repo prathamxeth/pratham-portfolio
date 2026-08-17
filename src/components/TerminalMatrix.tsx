@@ -1,28 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { Copy, Check, Code2, Sparkles, Layers, Shield } from "lucide-react";
+import { Copy, Check, Code2 } from "lucide-react";
 import LiquidTabs, { TabItem } from "./LiquidTabs";
 import confetti from "canvas-confetti";
 
 export default function TerminalMatrix() {
-  const [activeTab, setActiveTab] = useState<string>("stack");
-  const [surfaceStyle, setSurfaceStyle] = useState<string>("frosted");
+  const [activeTab, setActiveTab] = useState<string>("design");
   const [copied, setCopied] = useState(false);
 
   const tabs: TabItem[] = [
-    { id: "stack", label: "Tech Stack Matrix" },
-    { id: "repo", label: "Repository Tree" },
-    { id: "spec", label: "Engine Specs" },
+    { id: "design", label: "Design" },
+    { id: "architecture", label: "Architecture" },
+    { id: "specs", label: "Specs" },
   ];
 
-  const surfaceTabs: TabItem[] = [
-    { id: "frosted", label: "Frosted" },
-    { id: "glass", label: "Liquid Glass" },
-    { id: "clear", label: "Clear" },
-  ];
-
-  const stackMatrixContent = `🎛️ PALZEE ANDROID SYSTEM
+  const designContent = `🎛️ PALZEE ANDROID SYSTEM
   🎨 UI & Design         : Jetpack Compose · Material3 · Custom Silhouette Layouts
   ⚡ Language & Runtime   : Kotlin 2.0+ · JVM 17 Target · Coroutines & Flow
   📹 Camera & Media      : CameraX 1.4.2 · AndroidX Media3 ExoPlayer · MediaMetadataRetriever
@@ -30,7 +23,7 @@ export default function TerminalMatrix() {
   🔒 Backend Services    : Supabase Auth · Supabase Realtime · Supabase Storage CDN
   🔔 Cloud Messaging     : Firebase Cloud Messaging (FCM) · Android Notifications`;
 
-  const repoStructureContent = `app
+  const architectureContent = `app
 ├── src/main/java/io/supabase/pals/
 │   ├── core/
 │   │   ├── designsystem/          # Common UI components, themes, design tokens & navigation
@@ -45,7 +38,7 @@ export default function TerminalMatrix() {
 │   └── utils/                     # Media GC, keyframe extractors & system helpers
 └── build.gradle.kts               # App-level Gradle dependencies & custom tasks`;
 
-  const specContent = `🚀 PALZEE ENGINE SPECIFICATIONS
+  const specsContent = `🚀 PALZEE ENGINE SPECIFICATIONS
 ├── Target Platform       : Android Native (SDK 26–35) · JVM 17
 ├── State Latch Engine    : timeUs = 0L instantaneous frame pre-caching
 ├── Feed Architecture     : Zero-algorithmic chronological loop
@@ -55,11 +48,11 @@ export default function TerminalMatrix() {
 
   const handleCopy = () => {
     const textToCopy = 
-      activeTab === "stack" 
-        ? stackMatrixContent 
-        : activeTab === "repo" 
-          ? repoStructureContent 
-          : specContent;
+      activeTab === "design" 
+        ? designContent 
+        : activeTab === "architecture" 
+          ? architectureContent 
+          : specsContent;
 
     navigator.clipboard.writeText(textToCopy);
     setCopied(true);
@@ -72,57 +65,32 @@ export default function TerminalMatrix() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const getSurfaceClass = () => {
-    switch (surfaceStyle) {
-      case "glass":
-        return "liquid-glass shadow-[0_24px_60px_rgba(23,192,253,0.25)] border-[var(--liquid-glass-border)]";
-      case "clear":
-        return "bg-black/40 dark:bg-black/70 backdrop-blur-md border-[var(--neutral-border)] shadow-lg";
-      case "frosted":
-      default:
-        return "magic-panel backdrop-blur-3xl saturate-200 border-[var(--liquid-glass-border)] shadow-2xl";
-    }
-  };
-
   return (
-    <section id="palzee-engine" className="py-6 space-y-6">
+    <section id="palzee-engine" className="py-6 space-y-4">
       
-      {/* Header & Surface Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div className="space-y-1">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--neutral-strong)] flex items-center gap-2">
-            <Code2 className="w-5 h-5 text-[var(--brand-primary)]" />
-            <span>PALZEE Architecture & Code</span>
-          </h2>
-          <p className="text-[var(--neutral-medium)] text-sm max-w-[65ch]">
-            Live repository structure, technology stack matrix, and zero-latency video engine fetched from GitHub.
-          </p>
-        </div>
-
-        {/* Liquid Surface Style Selector */}
-        <LiquidTabs
-          tabs={surfaceTabs}
-          activeTab={surfaceStyle}
-          onChange={setSurfaceStyle}
-          className="self-start sm:self-auto"
-        />
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-(--neutral-strong) flex items-center gap-2">
+          <Code2 className="w-5 h-5 text-(--brand-primary)" />
+          <span>Palzee</span>
+        </h2>
       </div>
 
-      {/* macOS Terminal / Architecture Screen Container */}
-      <div className={`rounded-2xl overflow-hidden font-mono text-xs border transition-all duration-300 ${getSurfaceClass()}`}>
+      {/* Borderless Transparent Liquid Glass Terminal Screen Container */}
+      <div className="rounded-3xl overflow-hidden font-mono text-xs liquid-glass shadow-lg transition-all duration-300">
         
-        {/* macOS Title Bar */}
-        <div className="px-4 py-3 border-b border-[var(--neutral-border)] flex items-center justify-between bg-[var(--neutral-alpha-weak)] flex-wrap gap-2">
+        {/* macOS Title Bar with Design | Architecture | Specs Switcher */}
+        <div className="px-5 py-3.5 flex items-center justify-between bg-(--liquid-active-bg) flex-wrap gap-2">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-sm" />
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-sm" />
-            <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-sm" />
-            <span className="text-xs text-[var(--neutral-weak)] ml-2 font-sans font-medium hidden md:inline">
-              github.com/prathamxeth/PALZEE-ANDROID (README.md)
+            <div className="w-3 h-3 rounded-full bg-[#ff5f56] opacity-80" />
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e] opacity-80" />
+            <div className="w-3 h-3 rounded-full bg-[#27c93f] opacity-80" />
+            <span className="text-xs text-(--neutral-weak) ml-2 font-sans font-medium hidden md:inline">
+              github.com/prathamxeth/PALZEE-ANDROID
             </span>
           </div>
 
-          {/* Liquid Tabs Navigation */}
+          {/* Design | Architecture | Specs Liquid Tabs */}
           <div className="flex items-center gap-2">
             <LiquidTabs
               tabs={tabs}
@@ -132,48 +100,48 @@ export default function TerminalMatrix() {
 
             <button
               onClick={handleCopy}
-              className="p-2 rounded-xl liquid-button text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)]"
+              className="p-2.5 rounded-full liquid-button text-(--neutral-medium) hover:text-(--neutral-strong)"
               title="Copy snippet"
               aria-label="Copy code snippet"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-[var(--neutral-weak)]" />}
+              {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-(--neutral-weak)" />}
             </button>
           </div>
         </div>
 
         {/* Architecture Content View */}
-        <div className="p-6 overflow-x-auto min-h-[260px] leading-relaxed text-[var(--neutral-strong)]">
-          {activeTab === "stack" && (
-            <pre className="text-xs text-[var(--brand-primary)] whitespace-pre font-mono leading-relaxed">
-              {stackMatrixContent}
+        <div className="p-6 overflow-x-auto min-h-[260px] leading-relaxed text-(--neutral-strong)">
+          {activeTab === "design" && (
+            <pre className="text-xs text-(--brand-primary) whitespace-pre font-mono leading-relaxed">
+              {designContent}
             </pre>
           )}
 
-          {activeTab === "repo" && (
+          {activeTab === "architecture" && (
             <pre className="text-xs text-emerald-500 dark:text-emerald-400 whitespace-pre font-mono leading-relaxed">
-              {repoStructureContent}
+              {architectureContent}
             </pre>
           )}
 
-          {activeTab === "spec" && (
-            <pre className="text-xs text-[var(--brand-secondary)] whitespace-pre font-mono leading-relaxed">
-              {specContent}
+          {activeTab === "specs" && (
+            <pre className="text-xs text-(--brand-secondary) whitespace-pre font-mono leading-relaxed">
+              {specsContent}
             </pre>
           )}
 
-          <div className="mt-5 pt-3 border-t border-[var(--neutral-border)] flex items-center justify-between text-xs text-[var(--neutral-weak)] flex-wrap gap-2">
+          <div className="mt-5 pt-3 flex items-center justify-between text-xs text-(--neutral-weak) flex-wrap gap-2">
             <div className="flex items-center gap-2">
               <span className="text-emerald-500 font-bold">➜</span>
-              <span className="text-[var(--brand-primary)]">~/PALZEE-ANDROID</span>
-              <span className="text-[var(--brand-peach)]">git:(main)</span>
-              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-[var(--brand-primary)]" />
+              <span className="text-(--brand-primary)">~/PALZEE-ANDROID</span>
+              <span className="text-(--brand-peach)">git:(main)</span>
+              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-(--brand-primary)" />
             </div>
 
             <a
               href="https://github.com/prathamxeth/PALZEE-ANDROID"
               target="_blank"
               rel="noreferrer"
-              className="text-[11px] font-mono text-[var(--brand-primary)] hover:underline flex items-center gap-1"
+              className="text-[11px] font-mono text-(--brand-primary) hover:underline flex items-center gap-1"
             >
               <span>View full README on GitHub</span>
               <span>↗</span>
