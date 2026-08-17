@@ -18,29 +18,29 @@ export default function AboutPage() {
   const { profile, experiences, education, technicalSkills } = PORTFOLIO_DATA;
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
       
       {/* Main Two-Column Structure */}
-      <div className="flex flex-col md:flex-row items-start gap-10 md:gap-14">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 sm:gap-10 md:gap-14">
         
         {/* Left Sticky Avatar & Profile Summary Column */}
-        <div className="md:w-56 shrink-0 md:sticky md:top-24 flex flex-col items-center md:items-start text-center md:text-left gap-4">
+        <div className="w-full md:w-56 shrink-0 md:sticky md:top-24 flex flex-col items-center md:items-start text-center md:text-left gap-3.5 sm:gap-4">
           
           {/* Avatar with Liquid Glass Specular Border */}
-          <div className="w-36 h-36 rounded-full overflow-hidden border border-(--liquid-glass-border) shadow-2xl relative bg-zinc-900">
+          <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-(--liquid-glass-border) shadow-2xl relative bg-zinc-900">
             <Image
               src={profile.avatar}
               alt={profile.name}
               fill
               className="object-cover"
-              sizes="144px"
+              sizes="(max-width: 640px) 112px, 144px"
               priority
             />
           </div>
 
           {/* Timezone / Location */}
           <div className="flex items-center gap-1.5 text-xs text-(--neutral-medium)">
-            <Globe className="w-3.5 h-3.5 text-(--brand-primary)" />
+            <Globe className="w-3.5 h-3.5 text-(--brand-primary) shrink-0" />
             <span>{profile.timezone}</span>
           </div>
 
@@ -49,7 +49,7 @@ export default function AboutPage() {
             {profile.languages.map((lang) => (
               <span
                 key={lang}
-                className="magic-tag px-2.5 py-0.5 rounded-full text-xs"
+                className="magic-tag px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs"
               >
                 {lang}
               </span>
@@ -59,37 +59,39 @@ export default function AboutPage() {
         </div>
 
         {/* Right Content Stream */}
-        <div className="flex-1 space-y-12">
+        <div className="flex-1 w-full space-y-10 sm:space-y-12">
           
           {/* Section: Introduction */}
-          <section id="Introduction" className="space-y-4 pt-2">
+          <section id="Introduction" className="space-y-4 pt-1 sm:pt-2">
             
             {/* Schedule Call Pill */}
-            <a
-              href={profile.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="liquid-button inline-flex items-center gap-2 p-1.5 pl-3.5 rounded-full text-(--brand-primary) text-xs font-medium hover:scale-[1.02] active:scale-95 transition-all shadow-sm"
-            >
-              <Calendar className="w-3.5 h-3.5" />
-              <span>Schedule a call / WhatsApp</span>
-              <div className="w-5 h-5 rounded-full bg-(--brand-primary) text-white flex items-center justify-center">
-                <ChevronRight className="w-3 h-3" />
-              </div>
-            </a>
+            <div className="flex justify-center md:justify-start">
+              <a
+                href={profile.whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="liquid-button inline-flex items-center gap-2 p-1.5 pl-3.5 rounded-full text-(--brand-primary) text-xs font-medium hover:scale-[1.02] active:scale-95 transition-all shadow-sm"
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Schedule a call / WhatsApp</span>
+                <div className="w-5 h-5 rounded-full bg-(--brand-primary) text-white flex items-center justify-center">
+                  <ChevronRight className="w-3 h-3" />
+                </div>
+              </a>
+            </div>
 
             {/* Name & Headline */}
-            <div className="space-y-1">
-              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-(--neutral-strong)">
+            <div className="space-y-1 text-center md:text-left">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-(--neutral-strong)">
                 {profile.name}
               </h1>
-              <p className="text-base font-medium text-(--brand-secondary)">
+              <p className="text-sm sm:text-base font-medium text-(--brand-secondary)">
                 {profile.headline}
               </p>
             </div>
 
             {/* Social Action Liquid Buttons */}
-            <div className="flex flex-wrap items-center gap-2 pt-2">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1">
               <a
                 href={profile.github}
                 target="_blank"
@@ -117,7 +119,7 @@ export default function AboutPage() {
                 className="liquid-button px-3.5 py-1.5 rounded-full text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <TwitterXIcon className="w-3.5 h-3.5" />
-                <span>X (Twitter)</span>
+                <span>X</span>
               </a>
 
               <a
@@ -130,25 +132,25 @@ export default function AboutPage() {
             </div>
 
             {/* Bio Body */}
-            <p className="text-sm sm:text-base text-(--neutral-medium) leading-relaxed pt-2 max-w-[65ch]">
+            <p className="text-xs sm:text-sm md:text-base text-(--neutral-medium) leading-relaxed pt-2 max-w-[65ch] text-center md:text-left mx-auto md:mx-0">
               {profile.bio}
             </p>
 
           </section>
 
           {/* Section: Work Experience */}
-          <section id="Work Experience" className="space-y-6 pt-6 border-t border-(--neutral-border)">
-            <h2 className="text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
+          <section id="Work Experience" className="space-y-4 sm:space-y-6 pt-4 sm:pt-6 border-t border-(--neutral-border)">
+            <h2 className="text-base sm:text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
               <Briefcase className="w-4 h-4 text-(--brand-primary)" />
               <span>Work Experience</span>
             </h2>
 
-            <div className="space-y-8">
+            <div className="space-y-4 sm:space-y-6">
               {experiences.map((exp) => (
-                <div key={exp.company} className="liquid-glass p-6 rounded-3xl space-y-2.5">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <div key={exp.company} className="liquid-glass p-4 sm:p-6 rounded-2xl sm:rounded-3xl space-y-2.5">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-bold text-base text-(--neutral-strong)">
+                      <span className="font-bold text-sm sm:text-base text-(--neutral-strong)">
                         {exp.company}
                       </span>
                       <span className="text-xs text-(--neutral-weak)">•</span>
@@ -160,12 +162,12 @@ export default function AboutPage() {
                       </span>
                     </div>
 
-                    <span className="text-xs font-mono text-(--neutral-weak)">
+                    <span className="text-[11px] sm:text-xs font-mono text-(--neutral-weak)">
                       {exp.timeframe}
                     </span>
                   </div>
 
-                  <p className="text-sm text-(--neutral-medium) leading-relaxed">
+                  <p className="text-xs sm:text-sm text-(--neutral-medium) leading-relaxed">
                     {exp.description}
                   </p>
 
@@ -184,7 +186,7 @@ export default function AboutPage() {
                     {exp.tech.map((t) => (
                       <span
                         key={t}
-                        className="magic-tag px-2 py-0.5 rounded text-[11px]"
+                        className="magic-tag px-2 py-0.5 rounded text-[10px] sm:text-[11px]"
                       >
                         {t}
                       </span>
@@ -196,20 +198,20 @@ export default function AboutPage() {
           </section>
 
           {/* Section: Studies */}
-          <section id="Studies" className="space-y-6 pt-6 border-t border-(--neutral-border)">
-            <h2 className="text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
+          <section id="Studies" className="space-y-4 sm:space-y-6 pt-4 sm:pt-6 border-t border-(--neutral-border)">
+            <h2 className="text-base sm:text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
               <GraduationCap className="w-4 h-4 text-(--brand-peach)" />
               <span>Studies</span>
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {education.map((edu) => (
-                <div key={edu.name} className="liquid-glass p-6 rounded-3xl space-y-1.5">
+                <div key={edu.name} className="liquid-glass p-4 sm:p-6 rounded-2xl sm:rounded-3xl space-y-1.5">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <h3 className="font-bold text-base text-(--neutral-strong)">
+                    <h3 className="font-bold text-sm sm:text-base text-(--neutral-strong)">
                       {edu.name}
                     </h3>
-                    <span className="text-xs font-mono text-(--neutral-weak)">
+                    <span className="text-[11px] sm:text-xs font-mono text-(--neutral-weak)">
                       {edu.timeframe}
                     </span>
                   </div>
@@ -227,15 +229,15 @@ export default function AboutPage() {
           </section>
 
           {/* Section: Technical Skills */}
-          <section id="Technical skills" className="space-y-6 pt-6 border-t border-(--neutral-border)">
-            <h2 className="text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
+          <section id="Technical skills" className="space-y-4 sm:space-y-6 pt-4 sm:pt-6 border-t border-(--neutral-border)">
+            <h2 className="text-base sm:text-lg font-bold text-(--neutral-strong) flex items-center gap-2">
               <Cpu className="w-4 h-4 text-(--brand-secondary)" />
               <span>Technical skills</span>
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
               {technicalSkills.map((skill) => (
-                <div key={skill.title} className="liquid-glass p-5 rounded-3xl space-y-2">
+                <div key={skill.title} className="liquid-glass p-4 sm:p-5 rounded-2xl sm:rounded-3xl space-y-2">
                   <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-(--neutral-strong)">
                     {skill.title}
                   </h3>
@@ -244,11 +246,11 @@ export default function AboutPage() {
                     {skill.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-1.5 pt-2">
+                  <div className="flex flex-wrap gap-1.5 pt-1.5">
                     {skill.tags.map((tag) => (
                       <span
                         key={tag.name}
-                        className="magic-tag px-2.5 py-0.5 rounded-full text-xs"
+                        className="magic-tag px-2 sm:px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs"
                       >
                         {tag.name}
                       </span>

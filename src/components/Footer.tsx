@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { GithubIcon, LinkedinIcon, TwitterXIcon, WhatsAppIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 
@@ -9,25 +8,26 @@ export default function Footer() {
   const { profile } = PORTFOLIO_DATA;
 
   return (
-    <footer className="py-10 border-t border-[var(--neutral-border)] relative z-10">
-      <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-[var(--neutral-medium)]">
+    <footer className="py-8 sm:py-10 border-t border-(--neutral-border) relative z-10 safe-paddings">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 text-xs text-(--neutral-medium) text-center sm:text-left">
         
         {/* Left Info */}
-        <div className="flex flex-col sm:flex-row items-center gap-2">
-          <span>© 2026 /</span>
-          <span className="font-semibold text-[var(--neutral-strong)]">{profile.name}</span>
-          <span className="text-[var(--neutral-weak)]">({profile.handle})</span>
-          <span>•</span>
-          <span>Lucknow & Kanpur, India</span>
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2">
+          <span>© 2026</span>
+          <span className="text-(--neutral-weak)">/</span>
+          <span className="font-semibold text-(--neutral-strong)">{profile.name}</span>
+          <span className="text-(--neutral-weak)">({profile.handle})</span>
+          <span className="hidden xs:inline">•</span>
+          <span className="block xs:inline w-full xs:w-auto text-(--neutral-weak)">Lucknow & Kanpur, India</span>
         </div>
 
         {/* Right Social Liquid Buttons */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           <a
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="w-8 h-8 rounded-xl liquid-icon-btn text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)]"
+            className="w-8 h-8 rounded-xl liquid-icon-btn text-(--neutral-medium) hover:text-(--neutral-strong)"
             title="GitHub"
             aria-label="GitHub Profile"
           >
@@ -38,7 +38,7 @@ export default function Footer() {
             href={profile.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="w-8 h-8 rounded-xl liquid-icon-btn text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)]"
+            className="w-8 h-8 rounded-xl liquid-icon-btn text-(--neutral-medium) hover:text-(--neutral-strong)"
             title="LinkedIn"
             aria-label="LinkedIn Profile"
           >
@@ -49,7 +49,7 @@ export default function Footer() {
             href={profile.x}
             target="_blank"
             rel="noreferrer"
-            className="w-8 h-8 rounded-xl liquid-icon-btn text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)]"
+            className="w-8 h-8 rounded-xl liquid-icon-btn text-(--neutral-medium) hover:text-(--neutral-strong)"
             title="X (Twitter)"
             aria-label="X Profile"
           >
@@ -60,7 +60,7 @@ export default function Footer() {
             href={profile.whatsappLink}
             target="_blank"
             rel="noreferrer"
-            className="w-8 h-8 rounded-xl liquid-icon-btn text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)]"
+            className="w-8 h-8 rounded-xl liquid-icon-btn text-(--neutral-medium) hover:text-(--neutral-strong)"
             title="WhatsApp"
             aria-label="WhatsApp Direct"
           >
@@ -69,7 +69,7 @@ export default function Footer() {
 
           <a
             href={`mailto:${profile.email}`}
-            className="w-8 h-8 rounded-xl liquid-icon-btn text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)]"
+            className="w-8 h-8 rounded-xl liquid-icon-btn text-(--neutral-medium) hover:text-(--neutral-strong)"
             title="Email"
             aria-label="Direct Email"
           >

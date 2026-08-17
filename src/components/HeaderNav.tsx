@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { 
   Home, 
@@ -9,12 +10,29 @@ import {
   Briefcase, 
   Mail, 
   Clock, 
-  Globe
+  Globe,
+  Sun,
+  Moon
 } from "lucide-react";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
+import { useTheme } from "./ThemeProvider";
+
+function subscribe() {
+  return () => {};
+}
+
+function getSnapshot() {
+  return true;
+}
+
+function getServerSnapshot() {
+  return false;
+}
 
 export default function HeaderNav() {
   const pathname = usePathname();
+  const { resolvedTheme, toggleTheme } = useTheme();
+  const isMounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [timeString, setTimeString] = useState("");
 
   useEffect(() => {
@@ -43,20 +61,48 @@ export default function HeaderNav() {
   ];
 
   return (
-    <header className="sticky top-0 inset-x-0 z-50 py-3 px-4 sm:px-8 flex items-center justify-between pointer-events-none">
+    <header className="sticky top-0 inset-x-0 z-50 py-2.5 sm:py-3 px-3 sm:px-6 md:px-8 flex items-center justify-between pointer-events-none transition-all duration-300">
       
-      {/* Left: Timezone / City with Liquid Glass Capsule */}
-      <div className="flex-1 flex items-center gap-2 text-xs font-mono font-medium text-(--neutral-medium) pointer-events-auto hidden md:flex">
-        <div className="liquid-icon-btn px-3 py-1 rounded-full text-xs gap-1.5 font-mono">
+      {/* Left: Brand Avatar / Mobile Status or Desktop Timezone Capsule */}
+      <div className="flex-1 flex items-center gap-2 text-xs font-mono font-medium text-(--neutral-medium) pointer-events-auto">
+        
+        {/* Desktop View: City & Timezone Capsule */}
+        <div className="hidden lg:flex liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
           <Globe className="w-3.5 h-3.5 text-(--brand-primary)" />
           <span>{PORTFOLIO_DATA.profile.timezone}</span>
         </div>
+
+        {/* Mobile / Tablet View: Compact Brand Identity & Live Dot */}
+        <Link 
+          href="/" 
+          className="flex lg:hidden items-center gap-2 liquid-glass px-2.5 py-1 rounded-full shadow-sm hover:scale-105 transition-transform"
+          aria-label="Home"
+        >
+          <div className="w-5 h-5 rounded-full overflow-hidden border border-(--liquid-glass-border) relative bg-zinc-900 shrink-0">
+            <Image
+              src={PORTFOLIO_DATA.profile.avatar}
+              alt="Pratham"
+              fill
+              className="object-cover"
+              sizes="20px"
+              priority
+            />
+          </div>
+          <span className="text-xs font-bold font-mono text-(--neutral-strong)">
+            PU
+          </span>
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+        </Link>
+
       </div>
 
-      {/* Center: LiquidGL Frosted Nav Dock */}
+      {/* Center: LiquidGL Frosted Navigation Dock */}
       <nav 
         aria-label="Main Navigation"
-        className="pointer-events-auto flex items-center gap-1 p-1 rounded-full magic-header-dock"
+        className="pointer-events-auto flex items-center gap-1 p-1 sm:p-1.5 rounded-full magic-header-dock shadow-lg"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -65,25 +111,45 @@ export default function HeaderNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-medium transition-all duration-200 ${
                 isActive
-                  ? "bg-(--liquid-active-bg) border border-(--liquid-active-border) text-(--neutral-strong) shadow-sm font-semibold"
+                  ? "bg-(--liquid-active-bg) border border-(--liquid-active-border) text-(--neutral-strong) shadow-sm font-semibold scale-[1.02]"
                   : "text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg)"
               }`}
+              aria-current={isActive ? "page" : undefined}
             >
-              <Icon className="w-3.5 h-3.5" />
+              <Icon className="w-3.5 h-3.5 shrink-0" />
               <span className="hidden sm:inline">{item.label}</span>
             </Link>
           );
         })}
       </nav>
 
-      {/* Right: Live IST Clock Liquid Capsule */}
-      <div className="flex-1 flex items-center justify-end gap-2 text-xs font-mono font-medium text-(--neutral-strong) pointer-events-auto hidden md:flex">
-        <div className="liquid-icon-btn px-3 py-1 rounded-full text-xs gap-1.5 font-mono">
+      {/* Right: Theme Switcher & Live IST Clock Liquid Capsule */}
+      <div className="flex-1 flex items-center justify-end gap-2 text-xs font-mono font-medium text-(--neutral-strong) pointer-events-auto">
+        
+        {/* Desktop: Live IST Clock */}
+        <div className="hidden md:flex liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
           <Clock className="w-3.5 h-3.5 text-(--brand-secondary)" />
           <span>{timeString || "00:00:00"}</span>
         </div>
+
+        {/* Theme Toggle Button */}
+        {isMounted && (
+          <button
+            onClick={toggleTheme}
+            className="liquid-icon-btn w-8 h-8 rounded-full shadow-sm text-(--neutral-strong) hover:scale-110 active:scale-95 transition-all"
+            title={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
+            aria-label="Toggle color theme"
+          >
+            {resolvedTheme === "dark" ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-(--brand-primary)" />
+            )}
+          </button>
+        )}
+
       </div>
 
     </header>

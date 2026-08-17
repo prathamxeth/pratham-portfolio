@@ -41,7 +41,7 @@ export default function LiquidTabs({
   return (
     <div
       ref={containerRef}
-      className={`relative inline-flex items-center p-0.5 rounded-full liquid-glass ${className}`}
+      className={`relative inline-flex items-center p-0.5 rounded-full liquid-glass max-w-full overflow-x-auto no-scrollbar ${className}`}
     >
       {/* Liquid Morphing Refractive Indicator */}
       <div
@@ -61,13 +61,13 @@ export default function LiquidTabs({
             key={tab.id}
             data-tab-id={tab.id}
             onClick={() => onChange(tab.id)}
-            className={`relative z-10 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors duration-200 ${
+            className={`relative z-10 flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-medium transition-colors duration-200 shrink-0 select-none ${
               isActive
                 ? "text-(--neutral-strong) font-semibold"
                 : "text-(--neutral-medium) hover:text-(--neutral-strong)"
             }`}
           >
-            {Icon && <Icon className="w-3.5 h-3.5" />}
+            {Icon && <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />}
             <span>{tab.label}</span>
           </button>
         );

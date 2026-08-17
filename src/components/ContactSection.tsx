@@ -6,8 +6,7 @@ import {
   Send, 
   Copy, 
   Check, 
-  ExternalLink,
-  MessageSquare
+  ExternalLink
 } from "lucide-react";
 import { WhatsAppIcon, LinkedinIcon, TwitterXIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
@@ -61,10 +60,10 @@ export default function ContactSection() {
       
       {/* Section Header */}
       <div className="space-y-1">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--neutral-strong)]">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-(--neutral-strong)">
           Get in Touch
         </h2>
-        <p className="text-[var(--neutral-medium)] text-sm max-w-[65ch]">
+        <p className="text-(--neutral-medium) text-sm max-w-[65ch]">
           Reach out for native engineering projects, architecture advisory, or direct inquiries.
         </p>
       </div>
@@ -73,7 +72,7 @@ export default function ContactSection() {
         
         {/* Quick Channels */}
         <div className="space-y-3">
-          <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--neutral-strong)] mb-2">
+          <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-(--neutral-strong) mb-2">
             Direct Channels
           </h3>
 
@@ -89,28 +88,28 @@ export default function ContactSection() {
                 <WhatsAppIcon className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-semibold text-[var(--neutral-strong)] group-hover:text-emerald-500 transition-colors">
+                <div className="text-xs font-semibold text-(--neutral-strong) group-hover:text-emerald-500 transition-colors">
                   WhatsApp Direct
                 </div>
-                <div className="text-xs font-mono text-[var(--neutral-weak)]">
+                <div className="text-xs font-mono text-(--neutral-weak)">
                   {profile.whatsapp}
                 </div>
               </div>
             </div>
-            <ExternalLink className="w-3.5 h-3.5 text-[var(--neutral-weak)] group-hover:text-emerald-500 transition-colors" />
+            <ExternalLink className="w-3.5 h-3.5 text-(--neutral-weak) group-hover:text-emerald-500 transition-colors" />
           </a>
 
           {/* Email */}
           <div className="magic-panel p-4 rounded-2xl flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-[var(--brand-primary)]/10 flex items-center justify-center text-[var(--brand-primary)]">
+              <div className="w-8 h-8 rounded-xl bg-(--brand-primary)/10 flex items-center justify-center text-(--brand-primary)">
                 <Mail className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-semibold text-[var(--neutral-strong)]">
+                <div className="text-xs font-semibold text-(--neutral-strong)">
                   Direct Email
                 </div>
-                <div className="text-xs font-mono text-[var(--neutral-weak)]">
+                <div className="text-xs font-mono text-(--neutral-weak)">
                   {profile.email}
                 </div>
               </div>
@@ -118,11 +117,11 @@ export default function ContactSection() {
             
             <button
               onClick={handleCopyEmail}
-              className="p-1.5 rounded-lg magic-panel hover:border-[var(--brand-primary)] transition-colors"
+              className="p-1.5 rounded-lg magic-panel hover:border-(--brand-primary) transition-colors"
               title="Copy email"
               aria-label="Copy email address"
             >
-              {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-[var(--neutral-weak)]" />}
+              {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-(--neutral-weak)" />}
             </button>
           </div>
 
@@ -138,15 +137,15 @@ export default function ContactSection() {
                 <LinkedinIcon className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-semibold text-[var(--neutral-strong)] group-hover:text-blue-500 transition-colors">
+                <div className="text-xs font-semibold text-(--neutral-strong) group-hover:text-blue-500 transition-colors">
                   LinkedIn
                 </div>
-                <div className="text-xs text-[var(--neutral-weak)]">
+                <div className="text-xs text-(--neutral-weak)">
                   Prathmesh Upadhyay
                 </div>
               </div>
             </div>
-            <ExternalLink className="w-3.5 h-3.5 text-[var(--neutral-weak)] group-hover:text-blue-500 transition-colors" />
+            <ExternalLink className="w-3.5 h-3.5 text-(--neutral-weak) group-hover:text-blue-500 transition-colors" />
           </a>
 
           {/* X */}
@@ -157,25 +156,25 @@ export default function ContactSection() {
             className="magic-panel p-4 rounded-2xl flex items-center justify-between group transition-all"
           >
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-xl bg-zinc-500/10 flex items-center justify-center text-[var(--neutral-strong)]">
+              <div className="w-8 h-8 rounded-xl bg-zinc-500/10 flex items-center justify-center text-(--neutral-strong)">
                 <TwitterXIcon className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-semibold text-[var(--neutral-strong)] group-hover:text-[var(--brand-primary)] transition-colors">
+                <div className="text-xs font-semibold text-(--neutral-strong) group-hover:text-(--brand-primary) transition-colors">
                   X (Twitter)
                 </div>
-                <div className="text-xs font-mono text-[var(--neutral-weak)]">
+                <div className="text-xs font-mono text-(--neutral-weak)">
                   @0xBlurr
                 </div>
               </div>
             </div>
-            <ExternalLink className="w-3.5 h-3.5 text-[var(--neutral-weak)] group-hover:text-[var(--brand-primary)] transition-colors" />
+            <ExternalLink className="w-3.5 h-3.5 text-(--neutral-weak) group-hover:text-(--brand-primary) transition-colors" />
           </a>
         </div>
 
         {/* Contact Form */}
         <div>
-          <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--neutral-strong)] mb-2">
+          <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-(--neutral-strong) mb-2">
             Send Message
           </h3>
 
@@ -184,10 +183,10 @@ export default function ContactSection() {
               <div className="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto border border-emerald-500/20">
                 <Check className="w-5 h-5" />
               </div>
-              <h4 className="text-sm font-bold text-[var(--neutral-strong)]">
+              <h4 className="text-sm font-bold text-(--neutral-strong)">
                 Message Dispatched
               </h4>
-              <p className="text-xs text-[var(--neutral-medium)]">
+              <p className="text-xs text-(--neutral-medium)">
                 Email client opened to confirm delivery.
               </p>
               <button
@@ -195,7 +194,7 @@ export default function ContactSection() {
                   setSubmitted(false);
                   setFormData({ name: "", email: "", subject: "", message: "" });
                 }}
-                className="px-3.5 py-1.5 rounded-xl text-xs font-medium bg-[var(--neutral-strong)] text-[var(--background)]"
+                className="px-3.5 py-1.5 rounded-xl text-xs font-medium bg-(--neutral-strong) text-(--background)"
               >
                 Send Another
               </button>
@@ -209,7 +208,7 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Your Name"
-                  className="w-full px-3 py-2 rounded-xl text-xs magic-tag text-[var(--neutral-strong)] placeholder:text-[var(--neutral-weak)] focus:outline-none focus:border-[var(--brand-primary)] transition-colors"
+                  className="w-full px-3 py-2 rounded-xl text-xs magic-tag text-(--neutral-strong) placeholder:text-(--neutral-weak) focus:outline-none focus:border-(--brand-primary) transition-colors"
                 />
 
                 <input
@@ -218,7 +217,7 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="Your Email"
-                  className="w-full px-3 py-2 rounded-xl text-xs magic-tag text-[var(--neutral-strong)] placeholder:text-[var(--neutral-weak)] focus:outline-none focus:border-[var(--brand-primary)] transition-colors"
+                  className="w-full px-3 py-2 rounded-xl text-xs magic-tag text-(--neutral-strong) placeholder:text-(--neutral-weak) focus:outline-none focus:border-(--brand-primary) transition-colors"
                 />
               </div>
 
@@ -227,7 +226,7 @@ export default function ContactSection() {
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 placeholder="Subject (Project Inquiry / Advisory)"
-                className="w-full px-3 py-2 rounded-xl text-xs magic-tag text-[var(--neutral-strong)] placeholder:text-[var(--neutral-weak)] focus:outline-none focus:border-[var(--brand-primary)] transition-colors"
+                className="w-full px-3 py-2 rounded-xl text-xs magic-tag text-(--neutral-strong) placeholder:text-(--neutral-weak) focus:outline-none focus:border-(--brand-primary) transition-colors"
               />
 
               <textarea
@@ -236,12 +235,12 @@ export default function ContactSection() {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="Your message..."
-                className="w-full px-3 py-2 rounded-xl text-xs magic-tag text-[var(--neutral-strong)] placeholder:text-[var(--neutral-weak)] focus:outline-none focus:border-[var(--brand-primary)] transition-colors resize-none"
+                className="w-full px-3 py-2 rounded-xl text-xs magic-tag text-(--neutral-strong) placeholder:text-(--neutral-weak) focus:outline-none focus:border-(--brand-primary) transition-colors resize-none"
               />
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-[var(--neutral-strong)] text-[var(--background)] hover:opacity-90 transition-all shadow-md"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-(--neutral-strong) text-(--background) hover:opacity-90 transition-all shadow-md"
               >
                 <span>Send Direct Message</span>
                 <Send className="w-3.5 h-3.5" />

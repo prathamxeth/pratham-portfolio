@@ -8,11 +8,10 @@ import {
   Mail, 
   Copy, 
   Check, 
-  Sparkles,
-  Smartphone,
-  Zap,
-  Shield,
-  GraduationCap
+  Smartphone, 
+  Zap, 
+  Shield, 
+  GraduationCap 
 } from "lucide-react";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import confetti from "canvas-confetti";
