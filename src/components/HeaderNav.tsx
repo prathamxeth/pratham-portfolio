@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { 
   Home, 
@@ -61,80 +60,67 @@ export default function HeaderNav() {
   ];
 
   return (
-    <header className="sticky top-0 inset-x-0 z-50 py-2.5 sm:py-3 px-3 sm:px-6 md:px-8 flex items-center justify-between pointer-events-none transition-all duration-300">
+    <header className="sticky top-0 inset-x-0 z-50 py-2 sm:py-3 px-3 sm:px-6 md:px-8 flex items-center justify-between pointer-events-none transition-all duration-300">
       
-      {/* Left: Brand Avatar / Mobile Status or Desktop Timezone Capsule */}
-      <div className="flex-1 flex items-center gap-2 text-xs font-mono font-medium text-(--neutral-medium) pointer-events-auto">
-        
-        {/* Desktop View: City & Timezone Capsule */}
-        <div className="hidden md:inline-flex items-center liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
+      {/* Desktop Left: Timezone Capsule (Hidden on mobile) */}
+      <div className="hidden md:flex flex-1 items-center gap-2 text-xs font-mono font-medium text-(--neutral-medium) pointer-events-auto">
+        <div className="inline-flex items-center liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
           <Globe className="w-3.5 h-3.5 text-(--brand-primary)" />
           <span>{PORTFOLIO_DATA.profile.timezone}</span>
         </div>
-
-        {/* Mobile View: Compact Brand Identity & Live Dot */}
-        <Link 
-          href="/" 
-          className="inline-flex md:hidden items-center gap-2 liquid-glass px-2.5 py-1 rounded-full shadow-sm hover:scale-105 transition-transform"
-          aria-label="Home"
-        >
-          <div className="w-5 h-5 rounded-full overflow-hidden border border-(--liquid-glass-border) relative bg-zinc-900 shrink-0">
-            <Image
-              src={PORTFOLIO_DATA.profile.avatar}
-              alt="Pratham"
-              fill
-              className="object-cover"
-              sizes="20px"
-              priority
-            />
-          </div>
-          <span className="text-xs font-bold font-mono text-(--neutral-strong)">
-            PU
-          </span>
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-        </Link>
-
       </div>
 
-      {/* Center: LiquidGL Frosted Navigation Dock */}
+      {/* Navigation Dock: Full-sized blurdock on Mobile, Floating centered dock on Desktop */}
       <nav 
         aria-label="Main Navigation"
-        className="pointer-events-auto flex items-center gap-1 p-1 sm:p-1.5 rounded-full magic-header-dock shadow-lg"
+        className="pointer-events-auto w-full md:w-auto max-w-lg md:max-w-none mx-auto flex items-center justify-between md:justify-center gap-1 p-1 sm:p-1.5 rounded-full magic-header-dock shadow-lg"
       >
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-medium transition-all duration-200 ${
-                isActive
-                  ? "bg-(--liquid-active-bg) border border-(--liquid-active-border) text-(--neutral-strong) shadow-sm font-semibold scale-[1.02]"
-                  : "text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg)"
-              }`}
-              aria-current={isActive ? "page" : undefined}
-            >
-              <Icon className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">{item.label}</span>
-            </Link>
-          );
-        })}
+        <div className="flex-1 md:flex-initial flex items-center justify-between md:justify-start gap-1">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-2.5 sm:px-4 py-2 sm:py-2 rounded-full text-xs transition-all duration-200 min-h-[38px] ${
+                  isActive
+                    ? "bg-(--liquid-active-bg) border border-(--liquid-active-border) text-(--neutral-strong) shadow-sm font-semibold scale-[1.02]"
+                    : "text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg) font-medium"
+                }`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <Icon className="w-4 h-4 md:w-3.5 md:h-3.5 shrink-0" />
+                <span className="text-[12px] sm:text-xs tracking-tight">{item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Mobile-only Integrated Theme Toggle */}
+        {isMounted && (
+          <button
+            onClick={toggleTheme}
+            className="md:hidden flex items-center justify-center w-9 h-9 rounded-full text-(--neutral-strong) hover:bg-(--liquid-active-bg) active:scale-95 transition-all shrink-0 ml-0.5 border border-(--liquid-glass-border)"
+            title={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
+            aria-label="Toggle color theme"
+          >
+            {resolvedTheme === "dark" ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-(--brand-primary)" />
+            )}
+          </button>
+        )}
       </nav>
 
-      {/* Right: Theme Switcher & Live IST Clock Liquid Capsule */}
-      <div className="flex-1 flex items-center justify-end gap-2 text-xs font-mono font-medium text-(--neutral-strong) pointer-events-auto">
-        
-        {/* Desktop: Live IST Clock */}
-        <div className="hidden md:inline-flex items-center liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
+      {/* Desktop Right: Theme Switcher & Live IST Clock Liquid Capsule */}
+      <div className="hidden md:flex flex-1 items-center justify-end gap-2 text-xs font-mono font-medium text-(--neutral-strong) pointer-events-auto">
+        <div className="inline-flex items-center liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
           <Clock className="w-3.5 h-3.5 text-(--brand-secondary)" />
           <span>{timeString || "00:00:00"}</span>
         </div>
 
-        {/* Theme Toggle Button */}
         {isMounted && (
           <button
             onClick={toggleTheme}
@@ -149,7 +135,6 @@ export default function HeaderNav() {
             )}
           </button>
         )}
-
       </div>
 
     </header>
