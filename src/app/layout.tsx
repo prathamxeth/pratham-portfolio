@@ -46,21 +46,11 @@ export const metadata: Metadata = {
     siteName: "Prathmesh Upadhyay Portfolio",
     images: [
       {
-        url: "/profile.jpg",
+        url: "icon.jpg",
         width: 512,
         height: 512,
         alt: "Prathmesh Upadhyay Profile",
       },
-    ],
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/profile.jpg", type: "image/jpeg" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [
-      { url: "/profile.jpg", sizes: "180x180", type: "image/jpeg" },
     ],
   },
   twitter: {

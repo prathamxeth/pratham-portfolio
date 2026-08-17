@@ -67,15 +67,15 @@ export default function HeaderNav() {
       <div className="flex-1 flex items-center gap-2 text-xs font-mono font-medium text-(--neutral-medium) pointer-events-auto">
         
         {/* Desktop View: City & Timezone Capsule */}
-        <div className="hidden lg:flex liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
+        <div className="hidden md:inline-flex items-center liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
           <Globe className="w-3.5 h-3.5 text-(--brand-primary)" />
           <span>{PORTFOLIO_DATA.profile.timezone}</span>
         </div>
 
-        {/* Mobile / Tablet View: Compact Brand Identity & Live Dot */}
+        {/* Mobile View: Compact Brand Identity & Live Dot */}
         <Link 
           href="/" 
-          className="flex lg:hidden items-center gap-2 liquid-glass px-2.5 py-1 rounded-full shadow-sm hover:scale-105 transition-transform"
+          className="inline-flex md:hidden items-center gap-2 liquid-glass px-2.5 py-1 rounded-full shadow-sm hover:scale-105 transition-transform"
           aria-label="Home"
         >
           <div className="w-5 h-5 rounded-full overflow-hidden border border-(--liquid-glass-border) relative bg-zinc-900 shrink-0">
@@ -129,7 +129,7 @@ export default function HeaderNav() {
       <div className="flex-1 flex items-center justify-end gap-2 text-xs font-mono font-medium text-(--neutral-strong) pointer-events-auto">
         
         {/* Desktop: Live IST Clock */}
-        <div className="hidden md:flex liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
+        <div className="hidden md:inline-flex items-center liquid-icon-btn px-3 py-1.5 rounded-full text-xs gap-1.5 font-mono shadow-sm">
           <Clock className="w-3.5 h-3.5 text-(--brand-secondary)" />
           <span>{timeString || "00:00:00"}</span>
         </div>
