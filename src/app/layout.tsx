@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://palzee.fun"),
+  metadataBase: new URL("https://prathamxeth.github.io/pratham-portfolio"),
   title: "Prathmesh Upadhyay – CTO @FinRein & Developer @PalZee",
   description:
     "Meet Prathmesh Upadhyay, Android & Full-Stack Engineer from Lucknow & Kanpur, India. Founder at Fin Rein Inc., BS in Data Science @IIT Madras.",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://palzee.fun",
+    url: "https://prathamxeth.github.io/pratham-portfolio",
     title: "Prathmesh Upadhyay – CTO @FinRein & Developer @PalZee",
     description:
       "Android Developer & Full-Stack Engineer. Founder at Fin Rein Inc. BS in Data Science @IIT Madras.",
