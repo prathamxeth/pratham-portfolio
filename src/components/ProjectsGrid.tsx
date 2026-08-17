@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { 
   Layers, 
   ExternalLink, 
-  Github, 
   Smartphone, 
   Globe, 
   Sparkles, 
   Terminal,
   Activity
 } from "lucide-react";
+import { GithubIcon } from "./Icons";
 import { PORTFOLIO_DATA, Project } from "../data/portfolioData";
 
 export default function ProjectsGrid() {
@@ -120,7 +120,7 @@ export default function ProjectsGrid() {
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-medium glass-pill text-zinc-800 dark:text-zinc-200 hover:text-indigo-600 dark:hover:text-indigo-400 group/btn"
                   >
-                    <Github className="w-3.5 h-3.5" />
+                    <GithubIcon className="w-3.5 h-3.5" />
                     <span>Source Code</span>
                     <ExternalLink className="w-3 h-3 opacity-60 group-hover/btn:opacity-100 transition-opacity" />
                   </a>

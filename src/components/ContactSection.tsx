@@ -4,16 +4,12 @@ import React, { useState } from "react";
 import { 
   Mail, 
   Send, 
-  MessageSquare, 
-  Linkedin, 
-  Twitter, 
   Copy, 
   Check, 
-  PhoneCall, 
   Sparkles, 
-  ExternalLink,
-  Github
+  ExternalLink
 } from "lucide-react";
+import { WhatsAppIcon, LinkedinIcon, TwitterXIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import confetti from "canvas-confetti";
 
@@ -27,7 +23,6 @@ export default function ContactSection() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(profile.email);
@@ -39,12 +34,6 @@ export default function ContactSection() {
       colors: ["#6366f1", "#a855f7"]
     });
     setTimeout(() => setCopiedEmail(false), 2000);
-  };
-
-  const handleCopyPhone = () => {
-    navigator.clipboard.writeText(profile.whatsapp);
-    setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -101,7 +90,7 @@ export default function ContactSection() {
             >
               <div className="flex items-center gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-500/20">
-                  <MessageSquare className="w-5 h-5" />
+                  <WhatsAppIcon className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-zinc-950 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
@@ -150,7 +139,7 @@ export default function ContactSection() {
             >
               <div className="flex items-center gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center border border-blue-500/20">
-                  <Linkedin className="w-5 h-5" />
+                  <LinkedinIcon className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-zinc-950 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -173,7 +162,7 @@ export default function ContactSection() {
             >
               <div className="flex items-center gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-zinc-500/10 text-zinc-700 dark:text-zinc-300 flex items-center justify-center border border-zinc-500/20">
-                  <Twitter className="w-5 h-5" />
+                  <TwitterXIcon className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-sm font-bold text-zinc-950 dark:text-white group-hover:text-indigo-500 transition-colors">

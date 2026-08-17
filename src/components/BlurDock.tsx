@@ -8,11 +8,9 @@ import {
   Cpu, 
   Terminal, 
   Mail, 
-  Github, 
-  Linkedin, 
-  Twitter,
   ArrowUp
 } from "lucide-react";
+import { GithubIcon, LinkedinIcon, TwitterXIcon } from "./Icons";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 
 export default function BlurDock() {
@@ -100,7 +98,7 @@ export default function BlurDock() {
           aria-label="GitHub Profile"
           className="group relative p-2.5 sm:p-3 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
         >
-          <Github className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
+          <GithubIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
           <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-all duration-150 px-2.5 py-1 text-[11px] font-medium rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-md whitespace-nowrap pointer-events-none">
             GitHub
           </span>
@@ -113,7 +111,7 @@ export default function BlurDock() {
           aria-label="LinkedIn Profile"
           className="group relative p-2.5 sm:p-3 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
         >
-          <Linkedin className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
+          <LinkedinIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
           <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-all duration-150 px-2.5 py-1 text-[11px] font-medium rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-md whitespace-nowrap pointer-events-none">
             LinkedIn
           </span>
@@ -126,7 +124,7 @@ export default function BlurDock() {
           aria-label="X (Twitter) Profile"
           className="group relative p-2.5 sm:p-3 rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 transition-all"
         >
-          <Twitter className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
+          <TwitterXIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 transition-transform group-hover:scale-110" />
           <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-all duration-150 px-2.5 py-1 text-[11px] font-medium rounded-md bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-md whitespace-nowrap pointer-events-none">
             X (Twitter)
           </span>
