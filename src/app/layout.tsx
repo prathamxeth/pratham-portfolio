@@ -41,17 +41,20 @@ export const metadata: Metadata = {
       },
     ],
   },
+  icons: {
+    icon: [
+      { url: "/profile.jpg" },
+    ],
+    apple: [
+      { url: "/profile.jpg" },
+    ],
+  },
   twitter: {
     card: "summary_large_image",
     title: "Prathmesh Upadhyay (@0xBlurr)",
     description:
       "Android Developer & Full-Stack Engineer. Founder at Fin Rein Inc. BS in Data Science @IIT Madras.",
     creator: "@0xBlurr",
-    images: ["/profile.jpg"],
-  },
-  icons: {
-    icon: "/profile.jpg",
-    apple: "/profile.jpg",
   },
 };
 
