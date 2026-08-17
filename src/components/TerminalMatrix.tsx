@@ -1,63 +1,65 @@
 "use client";
 
 import React, { useState } from "react";
-import { Terminal, Copy, Check } from "lucide-react";
-import { PORTFOLIO_DATA } from "../data/portfolioData";
+import { Copy, Check, Code2, Sparkles, Layers, Shield } from "lucide-react";
+import LiquidTabs, { TabItem } from "./LiquidTabs";
 import confetti from "canvas-confetti";
 
 export default function TerminalMatrix() {
-  const [activeTab, setActiveTab] = useState<"neofetch" | "matrix" | "system">("neofetch");
+  const [activeTab, setActiveTab] = useState<string>("stack");
+  const [surfaceStyle, setSurfaceStyle] = useState<string>("frosted");
   const [copied, setCopied] = useState(false);
-  const { terminalSpecs } = PORTFOLIO_DATA;
 
-  const neofetchContent = `prathamxeth@system:~$ neofetch --ecosystem
- 
-  ██████╗  █████╗ ██╗     ███████╗███████╗███████╗
-  ██╔══██╗██╔══██╗██║     ╚══███╔╝██╔════╝██╔════╝
-  ██████╔╝███████║██║       ███╔╝ █████╗  █████╗  
-  ██╔═══╝ ██╔══██║██║      ███╔╝  ██╔══╝  ██╔══╝  
-  ██║     ██║  ██║███████╗███████╗███████╗███████╗
-  ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚══════╝
+  const tabs: TabItem[] = [
+    { id: "stack", label: "Tech Stack Matrix" },
+    { id: "repo", label: "Repository Tree" },
+    { id: "spec", label: "Engine Specs" },
+  ];
 
-  OS          : ${terminalSpecs.os}
-  HOST        : ${terminalSpecs.host}
-  SHELL       : ${terminalSpecs.shell}
-  BACKEND     : ${terminalSpecs.backend}
-  CORE SPECS  : ${terminalSpecs.coreSpecs}
-  UPTIME      : ${terminalSpecs.uptime}
-  PROJECTS    : ${terminalSpecs.projects}`;
+  const surfaceTabs: TabItem[] = [
+    { id: "frosted", label: "Frosted" },
+    { id: "glass", label: "Liquid Glass" },
+    { id: "clear", label: "Clear" },
+  ];
 
-  const matrixContent = `TECHNICAL ECOSYSTEM MATRIX
-├── Native Mobile         : Kotlin 2.0+ · Jetpack Compose · CameraX · Media3 · Room
-├── Web & Frontend        : TypeScript · Next.js · Tailwind CSS · React
-├── Backend & Cloud       : Supabase Auth · PostgreSQL · Edge Functions · Firebase FCM
-├── Security & Arch       : State-Latch Keyframes · Local-First GC · RLS
-└── Tools & DevOps        : Gradle · Android Studio · Git · Cloudflare Edge · Actions`;
+  const stackMatrixContent = `🎛️ PALZEE ANDROID SYSTEM
+  🎨 UI & Design         : Jetpack Compose · Material3 · Custom Silhouette Layouts
+  ⚡ Language & Runtime   : Kotlin 2.0+ · JVM 17 Target · Coroutines & Flow
+  📹 Camera & Media      : CameraX 1.4.2 · AndroidX Media3 ExoPlayer · MediaMetadataRetriever
+  💾 Local Persistence   : Room Database · Preferences DataStore
+  🔒 Backend Services    : Supabase Auth · Supabase Realtime · Supabase Storage CDN
+  🔔 Cloud Messaging     : Firebase Cloud Messaging (FCM) · Android Notifications`;
 
-  const systemJson = JSON.stringify(
-    {
-      developer: "Prathmesh Upadhyay",
-      handle: "@prathamxeth",
-      roles: ["CTO @FinRein", "Developer @PalZee"],
-      education: "BS in Data Science @IIT Madras",
-      principles: [
-        "Zero-latency execution",
-        "Local-first privacy",
-        "Liquid aesthetics",
-        "Clean architecture"
-      ]
-    },
-    null,
-    2
-  );
+  const repoStructureContent = `app
+├── src/main/java/io/supabase/pals/
+│   ├── core/
+│   │   ├── designsystem/          # Common UI components, themes, design tokens & navigation
+│   │   └── network/               # Supabase client & API services
+│   ├── feature/                   # Feature-driven modular packages
+│   │   ├── auth/                  # Sign in, registration, passkey & email flows
+│   │   ├── camera/                # CameraX viewfinder & instant moment capture
+│   │   ├── chat/                  # Real-time private messaging & video reactions
+│   │   ├── home/                  # Daily moments timeline & friend feed
+│   │   └── pals/                  # Friends circle management & profile setup
+│   ├── services/                  # Background sync workers & FCM NotificationService
+│   └── utils/                     # Media GC, keyframe extractors & system helpers
+└── build.gradle.kts               # App-level Gradle dependencies & custom tasks`;
+
+  const specContent = `🚀 PALZEE ENGINE SPECIFICATIONS
+├── Target Platform       : Android Native (SDK 26–35) · JVM 17
+├── State Latch Engine    : timeUs = 0L instantaneous frame pre-caching
+├── Feed Architecture     : Zero-algorithmic chronological loop
+├── Persistence           : Local-first SQLite with Room ORM
+├── Cloud & Auth          : Supabase Auth · PostgreSQL Row Level Security (RLS)
+└── Safety Standards      : End-to-end privacy by design · Child safety verified`;
 
   const handleCopy = () => {
     const textToCopy = 
-      activeTab === "neofetch" 
-        ? neofetchContent 
-        : activeTab === "matrix" 
-          ? matrixContent 
-          : systemJson;
+      activeTab === "stack" 
+        ? stackMatrixContent 
+        : activeTab === "repo" 
+          ? repoStructureContent 
+          : specContent;
 
     navigator.clipboard.writeText(textToCopy);
     setCopied(true);
@@ -65,97 +67,121 @@ export default function TerminalMatrix() {
       particleCount: 25,
       spread: 40,
       origin: { y: 0.8 },
-      colors: ["#6366f1", "#a855f7"]
+      colors: ["#17C0FD", "#049EE2", "#FF9689"]
     });
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const getSurfaceClass = () => {
+    switch (surfaceStyle) {
+      case "glass":
+        return "liquid-glass shadow-[0_24px_60px_rgba(23,192,253,0.25)] border-[var(--liquid-glass-border)]";
+      case "clear":
+        return "bg-black/40 dark:bg-black/70 backdrop-blur-md border-[var(--neutral-border)] shadow-lg";
+      case "frosted":
+      default:
+        return "magic-panel backdrop-blur-3xl saturate-200 border-[var(--liquid-glass-border)] shadow-2xl";
+    }
+  };
+
   return (
-    <section id="terminal" className="py-16 md:py-20 relative z-10">
-      <div className="max-w-3xl mx-auto px-6">
-        
-        {/* Section Header */}
-        <div className="space-y-1 mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 dark:text-white">
-            System Specs
+    <section id="palzee-engine" className="py-6 space-y-6">
+      
+      {/* Header & Surface Controls */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="space-y-1">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--neutral-strong)] flex items-center gap-2">
+            <Code2 className="w-5 h-5 text-[var(--brand-primary)]" />
+            <span>PALZEE Architecture & Code</span>
           </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-            Interactive macOS shell output and developer environment telemetry.
+          <p className="text-[var(--neutral-medium)] text-sm max-w-[65ch]">
+            Live repository structure, technology stack matrix, and zero-latency video engine fetched from GitHub.
           </p>
         </div>
 
-        {/* macOS Terminal Window (Frosted Glass) */}
-        <div className="apple-glass overflow-hidden font-mono text-xs shadow-2xl">
-          
-          {/* macOS Title Bar */}
-          <div className="px-4 py-3 border-b border-black/5 dark:border-white/5 flex items-center justify-between bg-black/[0.02] dark:bg-white/[0.02]">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-sm" />
-              <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-sm" />
-              <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-sm" />
-              <span className="text-xs text-zinc-500 ml-2 font-sans font-medium hidden sm:inline">
-                pratham@finrein-macbook: ~ (zsh)
-              </span>
-            </div>
+        {/* Liquid Surface Style Selector */}
+        <LiquidTabs
+          tabs={surfaceTabs}
+          activeTab={surfaceStyle}
+          onChange={setSurfaceStyle}
+          className="self-start sm:self-auto"
+        />
+      </div>
 
-            <div className="flex items-center gap-1.5">
-              <div className="flex items-center gap-1 p-0.5 rounded-lg apple-glass-pill">
-                {(["neofetch", "matrix", "system"] as const).map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    className={`px-2.5 py-0.5 rounded-md text-xs font-sans font-medium transition-all ${
-                      activeTab === tab
-                        ? "bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 shadow-sm"
-                        : "text-zinc-500 hover:text-zinc-950 dark:hover:text-white"
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
-
-              <button
-                onClick={handleCopy}
-                className="p-1.5 rounded-lg apple-glass-pill hover:border-indigo-500 transition-colors"
-                title="Copy snippet"
-                aria-label="Copy terminal text"
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-zinc-500" />}
-              </button>
-            </div>
+      {/* macOS Terminal / Architecture Screen Container */}
+      <div className={`rounded-2xl overflow-hidden font-mono text-xs border transition-all duration-300 ${getSurfaceClass()}`}>
+        
+        {/* macOS Title Bar */}
+        <div className="px-4 py-3 border-b border-[var(--neutral-border)] flex items-center justify-between bg-[var(--neutral-alpha-weak)] flex-wrap gap-2">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-sm" />
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-sm" />
+            <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-sm" />
+            <span className="text-xs text-[var(--neutral-weak)] ml-2 font-sans font-medium hidden md:inline">
+              github.com/prathamxeth/PALZEE-ANDROID (README.md)
+            </span>
           </div>
 
-          {/* Terminal Screen Content */}
-          <div className="p-6 overflow-x-auto min-h-[220px] leading-relaxed text-zinc-800 dark:text-zinc-200">
-            {activeTab === "neofetch" && (
-              <pre className="text-xs text-indigo-600 dark:text-indigo-400 whitespace-pre font-mono">
-                {neofetchContent}
-              </pre>
-            )}
+          {/* Liquid Tabs Navigation */}
+          <div className="flex items-center gap-2">
+            <LiquidTabs
+              tabs={tabs}
+              activeTab={activeTab}
+              onChange={setActiveTab}
+            />
 
-            {activeTab === "matrix" && (
-              <pre className="text-xs text-emerald-600 dark:text-emerald-400 whitespace-pre font-mono">
-                {matrixContent}
-              </pre>
-            )}
-
-            {activeTab === "system" && (
-              <pre className="text-xs text-cyan-600 dark:text-cyan-400 whitespace-pre font-mono">
-                {systemJson}
-              </pre>
-            )}
-
-            <div className="mt-4 pt-3 border-t border-black/5 dark:border-white/5 flex items-center gap-2 text-zinc-400">
-              <span className="text-emerald-500 font-bold">➜</span>
-              <span className="text-indigo-500">~/palzee</span>
-              <span className="text-pink-500">git:(main)</span>
-              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-indigo-500" />
-            </div>
+            <button
+              onClick={handleCopy}
+              className="p-2 rounded-xl liquid-button text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)]"
+              title="Copy snippet"
+              aria-label="Copy code snippet"
+            >
+              {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-[var(--neutral-weak)]" />}
+            </button>
           </div>
         </div>
 
+        {/* Architecture Content View */}
+        <div className="p-6 overflow-x-auto min-h-[260px] leading-relaxed text-[var(--neutral-strong)]">
+          {activeTab === "stack" && (
+            <pre className="text-xs text-[var(--brand-primary)] whitespace-pre font-mono leading-relaxed">
+              {stackMatrixContent}
+            </pre>
+          )}
+
+          {activeTab === "repo" && (
+            <pre className="text-xs text-emerald-500 dark:text-emerald-400 whitespace-pre font-mono leading-relaxed">
+              {repoStructureContent}
+            </pre>
+          )}
+
+          {activeTab === "spec" && (
+            <pre className="text-xs text-[var(--brand-secondary)] whitespace-pre font-mono leading-relaxed">
+              {specContent}
+            </pre>
+          )}
+
+          <div className="mt-5 pt-3 border-t border-[var(--neutral-border)] flex items-center justify-between text-xs text-[var(--neutral-weak)] flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-500 font-bold">➜</span>
+              <span className="text-[var(--brand-primary)]">~/PALZEE-ANDROID</span>
+              <span className="text-[var(--brand-peach)]">git:(main)</span>
+              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-[var(--brand-primary)]" />
+            </div>
+
+            <a
+              href="https://github.com/prathamxeth/PALZEE-ANDROID"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[11px] font-mono text-[var(--brand-primary)] hover:underline flex items-center gap-1"
+            >
+              <span>View full README on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
       </div>
+
     </section>
   );
 }

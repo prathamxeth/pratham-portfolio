@@ -7,7 +7,7 @@ import {
   Home, 
   User, 
   Briefcase, 
-  BookOpen, 
+  Mail, 
   Sun, 
   Moon, 
   Clock, 
@@ -43,7 +43,7 @@ export default function HeaderNav() {
     { href: "/", label: "Home", icon: Home },
     { href: "/about", label: "About", icon: User },
     { href: "/work", label: "Work", icon: Briefcase },
-    { href: "/blog", label: "Blog", icon: BookOpen },
+    { href: "/contact", label: "Contact", icon: Mail },
   ];
 
   return (
