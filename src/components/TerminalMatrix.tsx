@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Terminal, Copy, Check, Sparkles, Code2, Cpu } from "lucide-react";
+import { Terminal, Copy, Check } from "lucide-react";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import confetti from "canvas-confetti";
 
@@ -27,12 +27,12 @@ export default function TerminalMatrix() {
   UPTIME      : ${terminalSpecs.uptime}
   PROJECTS    : ${terminalSpecs.projects}`;
 
-  const matrixContent = `⚡ TECHNICAL ECOSYSTEM MATRIX
-├── 📱 Native Mobile         : Kotlin 2.0+ · Jetpack Compose · CameraX · Media3 ExoPlayer · Room
-├── 🌐 Web & Frontend        : Modern HTML5 · CSS3 · Tailwind CSS v4 · Responsive Liquid Design
-├── 🗄️ Backend & Cloud       : Supabase Auth · PostgreSQL · Edge Functions · Firebase FCM
-├── 🔒 Security & Arch       : State-Latch Keyframes · Local-First GC · RLS · CSAM Zero-Tolerance
-└── 🛠️ Tools & DevOps        : Gradle · Android Studio · Git · Cloudflare Edge · GitHub Actions`;
+  const matrixContent = `TECHNICAL ECOSYSTEM MATRIX
+├── Native Mobile         : Kotlin 2.0+ · Jetpack Compose · CameraX · Media3 · Room
+├── Web & Frontend        : TypeScript · Next.js · Tailwind CSS · React
+├── Backend & Cloud       : Supabase Auth · PostgreSQL · Edge Functions · Firebase FCM
+├── Security & Arch       : State-Latch Keyframes · Local-First GC · RLS
+└── Tools & DevOps        : Gradle · Android Studio · Git · Cloudflare Edge · Actions`;
 
   const systemJson = JSON.stringify(
     {
@@ -45,12 +45,7 @@ export default function TerminalMatrix() {
         "Local-first privacy",
         "Liquid aesthetics",
         "Clean architecture"
-      ],
-      active_stack: {
-        mobile: "Kotlin / Compose / Media3",
-        web: "TypeScript / Next.js / Tailwind v4",
-        cloud: "Supabase / Postgres / Cloudflare Edge"
-      }
+      ]
     },
     null,
     2
@@ -67,119 +62,95 @@ export default function TerminalMatrix() {
     navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     confetti({
-      particleCount: 30,
-      spread: 50,
+      particleCount: 25,
+      spread: 40,
       origin: { y: 0.8 },
-      colors: ["#6366f1", "#38bdf8", "#34d399"]
+      colors: ["#6366f1", "#a855f7"]
     });
     setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <section id="terminal" className="py-16 md:py-24 relative">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="terminal" className="py-16 md:py-20 relative z-10">
+      <div className="max-w-3xl mx-auto px-6">
         
         {/* Section Header */}
-        <div className="flex flex-col items-start gap-2 mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-mono text-indigo-600 dark:text-indigo-400">
-            <Terminal className="w-3.5 h-3.5" />
-            <span>INTERACTIVE SYSTEM SHELL</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-950 dark:text-white">
-            System & Ecosystem Matrix
+        <div className="space-y-1 mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950 dark:text-white">
+            System Specs
           </h2>
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base max-w-xl">
-            Live technical overview and specs straight from the terminal.
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+            Interactive macOS shell output and developer environment telemetry.
           </p>
         </div>
 
-        {/* Terminal Window Card */}
-        <div className="rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800 bg-[#0d1117] text-zinc-200 font-mono text-xs sm:text-sm">
+        {/* macOS Terminal Window (Frosted Glass) */}
+        <div className="apple-glass overflow-hidden font-mono text-xs shadow-2xl">
           
-          {/* Terminal Title Bar */}
-          <div className="bg-[#161b22] px-4 py-3 border-b border-zinc-800 flex items-center justify-between">
+          {/* macOS Title Bar */}
+          <div className="px-4 py-3 border-b border-black/5 dark:border-white/5 flex items-center justify-between bg-black/[0.02] dark:bg-white/[0.02]">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-              <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-              <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-              <span className="text-[11px] text-zinc-400 ml-2 font-sans font-medium hidden sm:inline">
-                pratham@finrein-arch: ~ (zsh)
+              <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-sm" />
+              <span className="text-xs text-zinc-500 ml-2 font-sans font-medium hidden sm:inline">
+                pratham@finrein-macbook: ~ (zsh)
               </span>
             </div>
 
-            {/* Terminal Tab Switchers */}
-            <div className="flex items-center gap-1 bg-[#0d1117] p-1 rounded-lg border border-zinc-800">
-              <button
-                onClick={() => setActiveTab("neofetch")}
-                className={`px-2.5 py-1 rounded text-[11px] font-sans font-medium transition-all ${
-                  activeTab === "neofetch"
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "text-zinc-400 hover:text-zinc-200"
-                }`}
-              >
-                neofetch
-              </button>
+            <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1 p-0.5 rounded-lg apple-glass-pill">
+                {(["neofetch", "matrix", "system"] as const).map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`px-2.5 py-0.5 rounded-md text-xs font-sans font-medium transition-all ${
+                      activeTab === tab
+                        ? "bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 shadow-sm"
+                        : "text-zinc-500 hover:text-zinc-950 dark:hover:text-white"
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
 
               <button
-                onClick={() => setActiveTab("matrix")}
-                className={`px-2.5 py-1 rounded text-[11px] font-sans font-medium transition-all ${
-                  activeTab === "matrix"
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "text-zinc-400 hover:text-zinc-200"
-                }`}
+                onClick={handleCopy}
+                className="p-1.5 rounded-lg apple-glass-pill hover:border-indigo-500 transition-colors"
+                title="Copy snippet"
+                aria-label="Copy terminal text"
               >
-                ecosystem.tree
-              </button>
-
-              <button
-                onClick={() => setActiveTab("system")}
-                className={`px-2.5 py-1 rounded text-[11px] font-sans font-medium transition-all ${
-                  activeTab === "system"
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "text-zinc-400 hover:text-zinc-200"
-                }`}
-              >
-                system.json
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 text-zinc-500" />}
               </button>
             </div>
-
-            {/* Copy button */}
-            <button
-              onClick={handleCopy}
-              className="p-1.5 rounded-md hover:bg-zinc-800 text-zinc-400 hover:text-zinc-100 transition-colors"
-              title="Copy snippet"
-              aria-label="Copy terminal content"
-            >
-              {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-            </button>
           </div>
 
-          {/* Terminal Screen Body */}
-          <div className="p-5 sm:p-6 overflow-x-auto min-h-[260px] leading-relaxed text-zinc-300">
+          {/* Terminal Screen Content */}
+          <div className="p-6 overflow-x-auto min-h-[220px] leading-relaxed text-zinc-800 dark:text-zinc-200">
             {activeTab === "neofetch" && (
-              <pre className="text-[11px] sm:text-xs text-indigo-300 whitespace-pre font-mono">
+              <pre className="text-xs text-indigo-600 dark:text-indigo-400 whitespace-pre font-mono">
                 {neofetchContent}
               </pre>
             )}
 
             {activeTab === "matrix" && (
-              <pre className="text-[11px] sm:text-xs text-emerald-300 whitespace-pre font-mono">
+              <pre className="text-xs text-emerald-600 dark:text-emerald-400 whitespace-pre font-mono">
                 {matrixContent}
               </pre>
             )}
 
             {activeTab === "system" && (
-              <pre className="text-[11px] sm:text-xs text-cyan-300 whitespace-pre font-mono">
+              <pre className="text-xs text-cyan-600 dark:text-cyan-400 whitespace-pre font-mono">
                 {systemJson}
               </pre>
             )}
 
-            {/* Prompt Line */}
-            <div className="mt-4 pt-3 border-t border-zinc-800 flex items-center gap-2 text-zinc-400">
-              <span className="text-emerald-400 font-bold">➜</span>
-              <span className="text-cyan-400">~/palzee-systems</span>
-              <span className="text-pink-400 font-semibold">git:(main)</span>
-              <span className="animate-pulse inline-block w-2 h-4 bg-indigo-400" />
+            <div className="mt-4 pt-3 border-t border-black/5 dark:border-white/5 flex items-center gap-2 text-zinc-400">
+              <span className="text-emerald-500 font-bold">➜</span>
+              <span className="text-indigo-500">~/palzee</span>
+              <span className="text-pink-500">git:(main)</span>
+              <span className="animate-pulse inline-block w-1.5 h-3.5 bg-indigo-500" />
             </div>
           </div>
         </div>

@@ -3,16 +3,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { 
-  Sparkles, 
   MapPin, 
   ArrowRight, 
   Mail, 
   Copy, 
   Check, 
-  Smartphone, 
-  Zap, 
-  ShieldCheck,
-  ExternalLink
+  Sparkles,
+  Smartphone,
+  Zap,
+  Shield,
+  GraduationCap
 } from "lucide-react";
 import { PORTFOLIO_DATA } from "../data/portfolioData";
 import confetti from "canvas-confetti";
@@ -26,163 +26,157 @@ export default function Hero() {
     setCopied(true);
     confetti({
       particleCount: 40,
-      spread: 60,
+      spread: 55,
       origin: { y: 0.8 },
-      colors: ["#6366f1", "#8b5cf6", "#ec4899"]
+      colors: ["#6366f1", "#a855f7", "#ec4899"]
     });
     setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <section id="hero" className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
-      {/* Decorative ambient background light */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-gradient-to-tr from-indigo-500/15 via-purple-500/10 to-pink-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
-
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Availability Badge */}
-        <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-pill mb-6 text-xs font-medium text-zinc-700 dark:text-zinc-300">
-          <span className="relative flex h-2.5 w-2.5">
+    <section id="hero" className="pt-24 pb-16 md:pt-32 md:pb-20 relative z-10">
+      <div className="max-w-3xl mx-auto px-6">
+        
+        {/* Apple Style Availability Capsule */}
+        <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full apple-glass-pill mb-8 text-xs font-medium">
+          <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
           </span>
-          <span>{profile.status}</span>
+          <span className="text-zinc-800 dark:text-zinc-200">{profile.status}</span>
         </div>
 
-        {/* Profile Header Main Flex */}
-        <div className="flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-8 mb-8">
-          <div className="flex-1 space-y-4">
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-2.5 flex-wrap">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-zinc-950 dark:text-white">
-                  {profile.name}
-                </h1>
-                <span className="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                  {profile.handle}
-                </span>
-              </div>
-              <p className="text-lg sm:text-xl font-medium text-zinc-700 dark:text-zinc-300">
+        {/* Hero Card Container (Apple Glass) */}
+        <div className="apple-glass p-7 sm:p-9 mb-8">
+          <div className="flex flex-col-reverse sm:flex-row items-start justify-between gap-6 mb-6">
+            
+            <div className="space-y-2.5 flex-1">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-950 dark:text-white">
+                {profile.name}
+              </h1>
+              
+              <p className="text-base sm:text-lg font-semibold text-vibrant-gradient">
                 {profile.headline}
               </p>
-            </div>
 
-            <div className="flex items-center gap-4 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-              <div className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-indigo-500" />
-                <span>{profile.location}</span>
+              <div className="flex items-center gap-3 text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-400 pt-1">
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+                  <span>{profile.location}</span>
+                </div>
+                <span>•</span>
+                <span className="font-mono text-zinc-700 dark:text-zinc-300">{profile.subhead}</span>
               </div>
-              <span>•</span>
-              <span className="font-mono text-zinc-600 dark:text-zinc-300">{profile.subhead}</span>
             </div>
+
+            {/* Avatar with Specular Ring */}
+            <div className="relative group shrink-0">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-white/40 dark:border-white/20 shadow-xl bg-zinc-900 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src={profile.avatar}
+                  alt={profile.name}
+                  width={96}
+                  height={96}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.style.display = "none";
+                    const parent = target.parentElement;
+                    if (parent) {
+                      const fallback = document.createElement("div");
+                      fallback.className = "text-xl font-bold font-mono text-white";
+                      fallback.innerText = "PU";
+                      parent.appendChild(fallback);
+                    }
+                  }}
+                />
+              </div>
+            </div>
+
           </div>
 
-          {/* Avatar with Glow Aura */}
-          <div className="relative group">
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur-md opacity-50 group-hover:opacity-85 transition duration-500" />
-            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden glass-panel border border-white/20 dark:border-white/10 shadow-xl flex items-center justify-center bg-gradient-to-b from-zinc-800 to-zinc-950">
-              <Image
-                src={profile.avatar}
-                alt={profile.name}
-                width={112}
-                height={112}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                unoptimized
-                onError={(e) => {
-                  // Fallback to stylized monogram if external image fails
-                  const target = e.currentTarget;
-                  target.style.display = "none";
-                  const parent = target.parentElement;
-                  if (parent) {
-                    const fallback = document.createElement("div");
-                    fallback.className = "text-3xl font-bold font-mono text-indigo-400";
-                    fallback.innerText = "PU";
-                    parent.appendChild(fallback);
-                  }
-                }}
-              />
-            </div>
+          <p className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-[65ch] mb-8">
+            {profile.bio}
+          </p>
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:opacity-90 transition-all shadow-md hover:shadow-lg"
+            >
+              <span>Explore Projects</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-medium apple-glass-pill hover:border-indigo-500 transition-colors"
+            >
+              <Mail className="w-4 h-4 text-indigo-500" />
+              <span>Get in Touch</span>
+            </a>
+
+            <button
+              onClick={handleCopyEmail}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono apple-glass-pill hover:border-indigo-500 transition-colors"
+              title="Copy Email to Clipboard"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-500" />
+                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5" />
+                  <span>{profile.email}</span>
+                </>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Bio paragraph with high-contrast emphasis */}
-        <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-2xl mb-8">
-          {profile.bio}
-        </p>
-
-        {/* Action Buttons */}
-        <div className="flex flex-wrap items-center gap-3.5 mb-12">
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-all shadow-md hover:shadow-lg hover:gap-3"
-          >
-            <span>Explore Projects</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium glass-panel text-zinc-800 dark:text-zinc-200 hover:text-indigo-600 dark:hover:text-indigo-400"
-          >
-            <Mail className="w-4 h-4" />
-            <span>Get in Touch</span>
-          </a>
-
-          <button
-            onClick={handleCopyEmail}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-mono glass-pill text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white"
-            title="Copy Email to Clipboard"
-          >
-            {copied ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-500" />
-                <span className="text-emerald-500 font-medium">Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5" />
-                <span>{profile.email}</span>
-              </>
-            )}
-          </button>
-        </div>
-
-        {/* Highlight Metrics Strip (Bento preview) */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="glass-panel p-4 rounded-2xl border border-black/5 dark:border-white/5">
-            <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 mb-1">
-              <Smartphone className="w-4 h-4" />
+        {/* Frosted Grid Metrics Bar */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+          <div className="apple-glass p-4 rounded-2xl flex flex-col justify-between">
+            <div className="flex items-center gap-1.5 text-indigo-500 mb-1">
+              <Smartphone className="w-3.5 h-3.5" />
               <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Mobile</span>
             </div>
-            <div className="font-semibold text-sm sm:text-base text-zinc-900 dark:text-zinc-100">Kotlin 2.0+</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">Jetpack Compose & Media3</div>
+            <div className="font-bold text-sm text-zinc-950 dark:text-white">Kotlin 2.0+</div>
+            <div className="text-xs text-zinc-600 dark:text-zinc-400">Jetpack Compose</div>
           </div>
 
-          <div className="glass-panel p-4 rounded-2xl border border-black/5 dark:border-white/5">
-            <div className="flex items-center gap-2 text-amber-500 dark:text-amber-400 mb-1">
-              <Zap className="w-4 h-4" />
+          <div className="apple-glass p-4 rounded-2xl flex flex-col justify-between">
+            <div className="flex items-center gap-1.5 text-amber-500 mb-1">
+              <Zap className="w-3.5 h-3.5" />
               <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Latency</span>
             </div>
-            <div className="font-semibold text-sm sm:text-base text-zinc-900 dark:text-zinc-100">Zero-Latency</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">State-Latch Keyframes</div>
+            <div className="font-bold text-sm text-zinc-950 dark:text-white">Zero-Latency</div>
+            <div className="text-xs text-zinc-600 dark:text-zinc-400">State-Latch Keyframe</div>
           </div>
 
-          <div className="glass-panel p-4 rounded-2xl border border-black/5 dark:border-white/5">
-            <div className="flex items-center gap-2 text-emerald-500 dark:text-emerald-400 mb-1">
-              <ShieldCheck className="w-4 h-4" />
-              <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Architecture</span>
+          <div className="apple-glass p-4 rounded-2xl flex flex-col justify-between">
+            <div className="flex items-center gap-1.5 text-emerald-500 mb-1">
+              <Shield className="w-3.5 h-3.5" />
+              <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Privacy</span>
             </div>
-            <div className="font-semibold text-sm sm:text-base text-zinc-900 dark:text-zinc-100">Local-First</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">Privacy & Clean Arch</div>
+            <div className="font-bold text-sm text-zinc-950 dark:text-white">Local-First</div>
+            <div className="text-xs text-zinc-600 dark:text-zinc-400">Clean Architecture</div>
           </div>
 
-          <div className="glass-panel p-4 rounded-2xl border border-black/5 dark:border-white/5">
-            <div className="flex items-center gap-2 text-purple-500 dark:text-purple-400 mb-1">
-              <Sparkles className="w-4 h-4" />
+          <div className="apple-glass p-4 rounded-2xl flex flex-col justify-between">
+            <div className="flex items-center gap-1.5 text-purple-500 mb-1">
+              <GraduationCap className="w-3.5 h-3.5" />
               <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Academics</span>
             </div>
-            <div className="font-semibold text-sm sm:text-base text-zinc-900 dark:text-zinc-100">IIT Madras</div>
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">BS in Data Science</div>
+            <div className="font-bold text-sm text-zinc-950 dark:text-white">IIT Madras</div>
+            <div className="text-xs text-zinc-600 dark:text-zinc-400">BS in Data Science</div>
           </div>
         </div>
+
       </div>
     </section>
   );

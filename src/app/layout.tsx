@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "../components/ThemeProvider";
+import HeaderNav from "../components/HeaderNav";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Prathmesh Upadhyay | CTO @FinRein & Developer @PalZee",
+  metadataBase: new URL("https://palzee.fun"),
+  title: "Prathmesh Upadhyay – CTO @FinRein & Developer @PalZee",
   description:
-    "Portfolio of Prathmesh Upadhyay (Pratham / @prathamxeth) — Android Developer, Full-Stack Engineer, Founder at Fin Rein Inc., BS in Data Science at IIT Madras. Building zero-latency, local-first native mobile experiences.",
+    "Meet Prathmesh Upadhyay, Android & Full-Stack Engineer from Lucknow & Kanpur, India. Founder at Fin Rein Inc., BS in Data Science @IIT Madras.",
   keywords: [
     "Prathmesh Upadhyay",
     "Pratham",
@@ -16,9 +20,7 @@ export const metadata: Metadata = {
     "Kotlin",
     "Jetpack Compose",
     "IIT Madras",
-    "Full-Stack Engineer",
-    "Zero-Latency",
-    "Local-First"
+    "Data Science"
   ],
   authors: [{ name: "Prathmesh Upadhyay", url: "https://github.com/prathamxeth" }],
   creator: "Prathmesh Upadhyay",
@@ -26,16 +28,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://palzee.fun",
-    title: "Prathmesh Upadhyay | CTO @FinRein & Developer @PalZee",
+    title: "Prathmesh Upadhyay – CTO @FinRein & Developer @PalZee",
     description:
       "Android Developer & Full-Stack Engineer. Founder at Fin Rein Inc. BS in Data Science @IIT Madras.",
     siteName: "Prathmesh Upadhyay Portfolio",
     images: [
       {
-        url: "https://palzee.fun/android-chrome-512x512.png",
+        url: "/profile.jpg",
         width: 512,
         height: 512,
-        alt: "Prathmesh Upadhyay Logo",
+        alt: "Prathmesh Upadhyay Profile",
       },
     ],
   },
@@ -45,11 +47,11 @@ export const metadata: Metadata = {
     description:
       "Android Developer & Full-Stack Engineer. Founder at Fin Rein Inc. BS in Data Science @IIT Madras.",
     creator: "@0xBlurr",
-    images: ["https://palzee.fun/android-chrome-512x512.png"],
+    images: ["/profile.jpg"],
   },
   icons: {
-    icon: "https://palzee.fun/android-chrome-512x512.png",
-    apple: "https://palzee.fun/android-chrome-512x512.png",
+    icon: "/profile.jpg",
+    apple: "/profile.jpg",
   },
 };
 
@@ -59,11 +61,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="scroll-smooth antialiased"
-    >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+      <body className="min-h-screen flex flex-col bg-[var(--background)] text-[var(--foreground)] relative selection:bg-[var(--brand-primary)] selection:text-white">
+        <ThemeProvider>
+          {/* Ambient Background Grid Pattern */}
+          <div className="magic-bg-dots" />
+          
+          {/* Top Apple / Magic UI Navigation */}
+          <HeaderNav />
+          
+          {/* Page Content */}
+          <div className="flex-1 relative z-10">
+            {children}
+          </div>
+          
+          {/* Footer */}
+          <Footer />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-ambient-gradient bg-grid-pattern relative selection:bg-indigo-500/20 selection:text-indigo-400">
+    <main className="min-h-screen liquid-mesh-bg text-zinc-950 dark:text-zinc-50 relative selection:bg-zinc-900 selection:text-zinc-50 dark:selection:bg-zinc-100 dark:selection:text-zinc-950">
       <Hero />
       <ExperienceTimeline />
       <ProjectsGrid />

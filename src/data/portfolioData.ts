@@ -1,22 +1,22 @@
 export interface WorkExperience {
-  role: string;
   company: string;
+  role: string;
+  timeframe: string;
   location: string;
-  period: string;
-  description: string;
-  highlights: string[];
-  tech: string[];
-  logo: string;
   badge: string;
+  description: string;
+  achievements: string[];
+  tech: string[];
+  images?: { src: string; alt: string }[];
 }
 
 export interface Education {
-  institution: string;
+  name: string;
   degree: string;
-  period: string;
+  timeframe: string;
+  description: string;
   highlights: string[];
   badge: string;
-  icon: string;
 }
 
 export interface Project {
@@ -25,18 +25,29 @@ export interface Project {
   tagline: string;
   description: string;
   category: string;
-  tags: string[];
+  tags: { name: string; icon?: string }[];
   metrics: string;
   githubUrl: string;
   liveUrl?: string;
+  images?: { src: string; alt: string }[];
   featured: boolean;
-  colorGradient: string;
+  colorAccent: string;
 }
 
 export interface SkillCategory {
-  name: string;
-  icon: string;
-  skills: string[];
+  title: string;
+  description: string;
+  tags: { name: string; icon?: string }[];
+}
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  publishedAt: string;
+  summary: string;
+  readingTime: string;
+  tags: string[];
+  content: string[];
 }
 
 export const PORTFOLIO_DATA = {
@@ -44,13 +55,14 @@ export const PORTFOLIO_DATA = {
     name: "Prathmesh Upadhyay",
     preferredName: "Pratham",
     handle: "@prathamxeth",
-    avatar: "https://palzee.fun/android-chrome-512x512.png",
+    avatar: "/profile.jpg",
     location: "Lucknow & Kanpur, India",
+    timezone: "Asia/Kolkata",
     headline: "CTO @FinRein · Developer @PalZee",
     subhead: "BS in Data Science & Applications @IIT Madras",
-    tagline: "Building zero-latency, local-first native mobile apps and modern web systems.",
+    tagline: "Building zero-latency, local-first native mobile experiences & modern web systems.",
     bio: "Android Developer & Full-Stack Engineer. Founder at Fin Rein Inc. Focused on clean architecture, local-first performance, state-latch keyframe engines, and non-intrusive social tech.",
-    status: "Available for high-impact projects & architecture advisory",
+    status: "Available for high-impact projects",
     email: "prathamup123@gmail.com",
     companyEmail: "pratham@palzee.fun",
     whatsapp: "+91 9811548599",
@@ -59,18 +71,18 @@ export const PORTFOLIO_DATA = {
     linkedin: "https://www.linkedin.com/in/prathmesh-upadhyay-11a5a732a/",
     x: "https://x.com/0xBlurr",
     website: "https://palzee.fun/",
+    languages: ["English", "Hindi"],
   },
   
   experiences: [
     {
-      role: "Developer",
       company: "PalZee",
+      role: "Developer",
+      timeframe: "2026 - Present",
       location: "Kanpur, Uttar Pradesh, India · Hybrid",
-      period: "Jun 2026 – Present",
       badge: "Full-time",
-      logo: "📱",
       description: "Spearheading the native Android application architecture for PALZEE — a privacy-first micro-vlogging platform for real-time daily moments.",
-      highlights: [
+      achievements: [
         "Architected camera capture and keyframe playback engine with CameraX & Media3 ExoPlayer for instant video starts with zero lag.",
         "Engineered real-time state latching (timeUs = 0) and zero-algorithmic chronological feeds for authentic social circles.",
         "Integrated Supabase Auth, PostgreSQL Row Level Security (RLS), and Edge CDN media distribution."
@@ -78,44 +90,43 @@ export const PORTFOLIO_DATA = {
       tech: ["Kotlin 2.0", "Jetpack Compose", "CameraX", "Media3", "Supabase", "Room", "Coroutines"]
     },
     {
-      role: "Chief Technology Officer (CTO)",
       company: "FinRein",
-      location: "Kanpur, Uttar Pradesh, India · Hybrid",
-      period: "Apr 2026 – Present",
+      role: "Chief Technology Officer (CTO)",
+      timeframe: "2026 - Present",
+      location: "Kanpur & Lucknow, India · Hybrid",
       badge: "Full-time",
-      logo: "⚡",
       description: "Leading technology strategy, infrastructure design, and core software engineering. Turning ambitious concepts into resilient, scalable products.",
-      highlights: [
+      achievements: [
         "Architected multi-tenant cloud backends, Edge APIs, and SaaS pipelines optimized for speed and reliability.",
         "Drove UI/UX engineering with liquid modern web interfaces, micro-animations, and fluid responsive design systems.",
         "Established automated CI/CD deployment routines, security benchmarks, and zero-tolerance safety policies."
       ],
-      tech: ["Architecture", "Full-Stack Dev", "Mobile Systems", "SaaS", "PostgreSQL", "Cloudflare Edge", "Tailwind CSS"]
+      tech: ["System Architecture", "Full-Stack Dev", "Mobile Systems", "SaaS", "PostgreSQL", "Cloudflare Edge", "Tailwind CSS"]
     }
   ] as WorkExperience[],
 
   education: [
     {
-      institution: "Indian Institute of Technology, Madras (IIT Madras)",
+      name: "Indian Institute of Technology, Madras (IIT Madras)",
       degree: "Bachelor of Science - BS, Data Science & Applications / Computer Science",
-      period: "Sep 2025 – Mar 2027",
+      timeframe: "2025 - 2027",
+      description: "Specializing in Large-scale Data Systems, Web Architecture & SaaS Engineering.",
       highlights: [
-        "Specializing in Large-scale Data Systems, Web Architecture & SaaS Engineering.",
-        "Advanced study in Algorithms, Distributed Systems, and Modern Computing."
+        "Advanced study in Algorithms, Distributed Systems, and Modern Computing.",
+        "Statistical machine learning and data engineering pipelines."
       ],
-      badge: "Undergraduate",
-      icon: "🎓"
+      badge: "Undergraduate"
     },
     {
-      institution: "Jawahar Navodaya Vidyalaya (JNV SDR)",
+      name: "Jawahar Navodaya Vidyalaya (JNV SDR)",
       degree: "Senior Secondary (12th Grade) — Physics, Chemistry & Mathematics (PCM)",
-      period: "Apr 2020 – Mar 2024",
+      timeframe: "2020 - 2024",
+      description: "Rigorous foundation in analytical problem solving, mathematics, and computational logic.",
       highlights: [
-        "Rigorous foundation in analytical problem solving, mathematics, and computational logic.",
-        "Academic excellence with distinction in scientific coursework."
+        "Academic excellence with distinction in scientific coursework.",
+        "Competitive programming foundation."
       ],
-      badge: "High School",
-      icon: "🏫"
+      badge: "High School"
     }
   ] as Education[],
 
@@ -126,25 +137,38 @@ export const PORTFOLIO_DATA = {
       tagline: "Native Android micro-vlogging app with zero-latency keyframes.",
       description: "A native, privacy-first micro-vlogging platform designed for sharing real-time daily moments with close friends. Powered by Kotlin and Jetpack Compose featuring zero-latency keyframe playback and algorithm-free feeds.",
       category: "Native Android / Kotlin",
-      tags: ["Kotlin 2.0", "Jetpack Compose", "CameraX", "Media3 ExoPlayer", "Supabase", "Room DB"],
-      metrics: "⚡ Zero-Latency State-Latch · 🔒 Privacy-First Architecture",
+      tags: [
+        { name: "Kotlin 2.0" },
+        { name: "Jetpack Compose" },
+        { name: "CameraX" },
+        { name: "Media3 ExoPlayer" },
+        { name: "Supabase" },
+        { name: "Room DB" }
+      ],
+      metrics: "⚡ Zero-Latency Keyframes · 🔒 Local-First Privacy",
       githubUrl: "https://github.com/prathamxeth/PALZEE-ANDROID",
       liveUrl: "https://palzee.fun/",
       featured: true,
-      colorGradient: "from-indigo-500/20 via-purple-500/20 to-pink-500/20"
+      colorAccent: "#17C0FD"
     },
     {
       id: "palzee-site",
-      title: "PALZEE Site & Compliance Portal",
+      title: "PALZEE Site & Web Portal",
       tagline: "Official web hub, download distribution, and legal safety center.",
       description: "The official web portal for PALZEE by Fin Rein Inc. Delivers instant app download routing, user feedback ingestion pipelines, and legal compliance policies including Privacy and Child Safety Standards.",
       category: "Web & Edge Systems",
-      tags: ["HTML5", "Tailwind CSS v4", "Supabase", "Cloudflare Edge", "TypeScript"],
-      metrics: "⚡ Sub-50ms Global Edge Response · 🌐 Multi-Region CDN",
+      tags: [
+        { name: "HTML5" },
+        { name: "Tailwind CSS v4" },
+        { name: "Supabase" },
+        { name: "Cloudflare Edge" },
+        { name: "TypeScript" }
+      ],
+      metrics: "⚡ Sub-50ms Edge Response · 🌐 Multi-Region CDN",
       githubUrl: "https://github.com/prathamxeth/PALZEE-SITE",
       liveUrl: "https://palzee.fun/",
       featured: true,
-      colorGradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/20"
+      colorAccent: "#049EE2"
     },
     {
       id: "mero-nepal",
@@ -152,37 +176,98 @@ export const PORTFOLIO_DATA = {
       tagline: "Interactive cultural and tourism portal with liquid modern UI.",
       description: "An immersive digital showcase celebrating the culture, scenic trekking routes, and rich heritage of Nepal. Features interactive discovery cards, fluid transitions, and responsive liquid design.",
       category: "Full-Stack Web App",
-      tags: ["TypeScript", "Tailwind CSS", "Next.js", "Liquid UI", "Edge Functions"],
-      metrics: "🎨 Liquid Micro-Interactions · 🚀 100/100 Lighthouse Performance",
+      tags: [
+        { name: "TypeScript" },
+        { name: "Tailwind CSS" },
+        { name: "Next.js" },
+        { name: "Liquid UI" },
+        { name: "Edge Functions" }
+      ],
+      metrics: "🎨 Liquid Micro-Interactions · 🚀 100/100 Lighthouse",
       githubUrl: "https://github.com/prathamxeth/mero-nepal",
       liveUrl: "https://github.com/prathamxeth/mero-nepal",
       featured: true,
-      colorGradient: "from-amber-500/20 via-orange-500/20 to-rose-500/20"
+      colorAccent: "#FF9689"
     }
   ] as Project[],
 
-  skillCategories: [
+  technicalSkills: [
     {
-      name: "Native Mobile Systems",
-      icon: "📱",
-      skills: ["Kotlin 2.0+", "Jetpack Compose", "CameraX", "Media3 ExoPlayer", "Room Database", "Coroutines & Flow", "Android Studio", "Gradle"]
+      title: "Native Mobile Systems",
+      description: "Engineering zero-latency video engines and clean MVVM / MVI architectures on Android.",
+      tags: [
+        { name: "Kotlin 2.0+" },
+        { name: "Jetpack Compose" },
+        { name: "CameraX" },
+        { name: "Media3 ExoPlayer" },
+        { name: "Room DB" },
+        { name: "Coroutines & Flow" },
+        { name: "Android Studio" },
+        { name: "Gradle" }
+      ]
     },
     {
-      name: "Web & Frontend Architecture",
-      icon: "🌐",
-      skills: ["TypeScript", "Next.js", "React 19", "Tailwind CSS v4", "Liquid CSS3 Animations", "Responsive UI/UX", "Figma Design"]
+      title: "Web & Frontend Architecture",
+      description: "Building responsive, liquid web applications with modern design systems and smooth micro-interactions.",
+      tags: [
+        { name: "TypeScript" },
+        { name: "Next.js" },
+        { name: "React" },
+        { name: "Tailwind CSS v4" },
+        { name: "CSS3 Liquid Motion" },
+        { name: "Figma" }
+      ]
     },
     {
-      name: "Backend, Cloud & Edge",
-      icon: "🗄️",
-      skills: ["Supabase Auth & RLS", "PostgreSQL", "Cloudflare Edge", "Firebase FCM", "RESTful APIs", "Edge Functions", "GitHub Actions"]
+      title: "Backend, Cloud & Edge",
+      description: "Designing low-latency edge computing, serverless databases, and row-level security.",
+      tags: [
+        { name: "Supabase" },
+        { name: "PostgreSQL" },
+        { name: "Cloudflare Edge" },
+        { name: "Firebase FCM" },
+        { name: "REST APIs" },
+        { name: "GitHub Actions" }
+      ]
     },
     {
-      name: "Core Engineering & Security",
-      icon: "⚡",
-      skills: ["State-Latch Keyframes", "Local-First Architecture", "Zero-Latency Pipelines", "CSAM Compliance", "Data Structures", "System Design"]
+      title: "Core Architecture & Security",
+      description: "System principles ensuring zero-latency throughput, local-first caching, and complete privacy compliance.",
+      tags: [
+        { name: "State-Latch Keyframes" },
+        { name: "Local-First GC" },
+        { name: "CSAM Compliance" },
+        { name: "Data Structures & Algos" }
+      ]
     }
   ] as SkillCategory[],
+
+  blogs: [
+    {
+      slug: "zero-latency-keyframe-engine",
+      title: "Architecting a Zero-Latency Keyframe Engine in Kotlin with Media3",
+      publishedAt: "Aug 2026",
+      summary: "How we eliminated video playback startup latency to under 15ms in PALZEE using custom state-latch keyframing.",
+      readingTime: "4 min read",
+      tags: ["Android", "Kotlin", "Media3", "Performance"],
+      content: [
+        "In short-form social micro-vlogging, even a 100ms buffering spinner destroys the spontaneous feeling of a friend's live story.",
+        "By binding CameraX pre-warmed sessions with Media3 ExoPlayer custom frame pre-caching and state-latch initialization at timeUs = 0, we achieved instant, frame-accurate playback."
+      ]
+    },
+    {
+      slug: "local-first-social-tech",
+      title: "Local-First Architecture: Building Non-Intrusive Social Applications",
+      publishedAt: "Jul 2026",
+      summary: "Why algorithmic feeds compromise authenticity, and how local-first databases with Supabase RLS empower user privacy.",
+      readingTime: "5 min read",
+      tags: ["Architecture", "Privacy", "Supabase", "Local-First"],
+      content: [
+        "Traditional social networks monetize algorithmic engagement loops. In contrast, local-first social architecture keeps the user's circle strictly chronological and private.",
+        "We discuss our schema design using Room for local offline SQLite persistence synchronized with Supabase Edge CDN."
+      ]
+    }
+  ] as BlogPost[],
 
   terminalSpecs: {
     user: "prathamxeth@system",
