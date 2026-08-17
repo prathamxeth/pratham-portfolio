@@ -47,18 +47,20 @@ export default function HeaderNav() {
   ];
 
   return (
-    <header className="sticky top-0 inset-x-0 z-50 py-3 px-4 sm:px-8 flex items-center justify-between pointer-events-none">
+    <header className="sticky top-0 inset-x-0 z-50 py-3.5 px-4 sm:px-8 flex items-center justify-between pointer-events-none">
       
-      {/* Left: Timezone / City */}
-      <div className="flex-1 flex items-center gap-2 text-xs font-mono font-medium text-[var(--neutral-medium)] pointer-events-auto hidden md:flex">
-        <Globe className="w-3.5 h-3.5 text-[var(--brand-primary)]" />
-        <span>{PORTFOLIO_DATA.profile.timezone}</span>
+      {/* Left: Timezone / City with Liquid Glass Capsule */}
+      <div className="flex-1 flex items-center gap-2 text-xs font-mono font-medium text-(--neutral-medium) pointer-events-auto hidden md:flex">
+        <div className="liquid-icon-btn px-2.5 py-1 rounded-xl text-xs gap-1.5 font-mono">
+          <Globe className="w-3.5 h-3.5 text-(--brand-primary)" />
+          <span>{PORTFOLIO_DATA.profile.timezone}</span>
+        </div>
       </div>
 
-      {/* Center: Apple-style Frosted Nav Dock */}
+      {/* Center: LiquidGL Frosted Nav Dock */}
       <nav 
         aria-label="Main Navigation"
-        className="pointer-events-auto flex items-center gap-1 p-1 rounded-2xl magic-header-dock shadow-xl"
+        className="pointer-events-auto flex items-center gap-1 p-1 rounded-2xl magic-header-dock"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -67,10 +69,10 @@ export default function HeaderNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 ${
                 isActive
-                  ? "bg-[var(--neutral-strong)] text-[var(--background)] shadow-sm"
-                  : "text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)] hover:bg-[var(--neutral-alpha-weak)]"
+                  ? "bg-(--neutral-strong) text-(--background) shadow-sm font-semibold"
+                  : "text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--neutral-alpha-medium)"
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
@@ -79,26 +81,28 @@ export default function HeaderNav() {
           );
         })}
 
-        <div className="h-4 w-[1px] bg-[var(--neutral-border)] mx-1" />
+        <div className="h-4 w-px bg-(--neutral-border) mx-1" />
 
-        {/* Theme Toggle Button */}
+        {/* Liquid Theme Toggle Button */}
         <button
           onClick={toggleTheme}
           aria-label="Toggle Theme"
-          className="p-1.5 rounded-xl text-[var(--neutral-medium)] hover:text-[var(--neutral-strong)] hover:bg-[var(--neutral-alpha-weak)] transition-all"
+          className="p-2 rounded-xl text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--neutral-alpha-medium) active:scale-95 transition-all"
         >
           {resolvedTheme === "dark" ? (
-            <Sun className="w-4 h-4 text-[var(--brand-peach)]" />
+            <Sun className="w-3.5 h-3.5 text-(--brand-peach)" />
           ) : (
-            <Moon className="w-4 h-4 text-[var(--brand-primary)]" />
+            <Moon className="w-3.5 h-3.5 text-(--brand-primary)" />
           )}
         </button>
       </nav>
 
-      {/* Right: Live IST Clock */}
-      <div className="flex-1 flex items-center justify-end gap-2 text-xs font-mono font-medium text-[var(--neutral-strong)] pointer-events-auto hidden md:flex">
-        <Clock className="w-3.5 h-3.5 text-[var(--brand-secondary)]" />
-        <span>{timeString || "00:00:00"}</span>
+      {/* Right: Live IST Clock Capsule */}
+      <div className="flex-1 flex items-center justify-end gap-2 text-xs font-mono font-medium text-(--neutral-strong) pointer-events-auto hidden md:flex">
+        <div className="liquid-icon-btn px-2.5 py-1 rounded-xl text-xs gap-1.5 font-mono">
+          <Clock className="w-3.5 h-3.5 text-(--brand-secondary)" />
+          <span>{timeString || "00:00:00"}</span>
+        </div>
       </div>
 
     </header>

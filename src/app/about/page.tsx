@@ -84,8 +84,8 @@ export default function AboutPage() {
         {/* Left Sticky Avatar & Profile Summary Column */}
         <div className="md:w-56 shrink-0 md:sticky md:top-24 flex flex-col items-center md:items-start text-center md:text-left gap-4">
           
-          {/* Avatar with Specular Border */}
-          <div className="w-36 h-36 rounded-full overflow-hidden border border-(--neutral-border-strong) shadow-xl relative bg-zinc-900">
+          {/* Avatar with Liquid Glass Specular Border */}
+          <div className="w-36 h-36 rounded-full overflow-hidden border border-(--liquid-border) shadow-2xl relative bg-zinc-900">
             <Image
               src={profile.avatar}
               alt={profile.name}
@@ -127,7 +127,7 @@ export default function AboutPage() {
               href={profile.whatsappLink}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 p-1 pl-3 rounded-full border border-(--brand-primary)/40 bg-(--brand-primary)/10 text-(--brand-primary) text-xs font-medium hover:scale-[1.02] transition-transform"
+              className="inline-flex items-center gap-2 p-1.5 pl-3.5 rounded-full border border-(--brand-primary)/40 bg-(--brand-primary)/10 text-(--brand-primary) text-xs font-medium hover:scale-[1.02] active:scale-95 transition-all shadow-sm"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Schedule a call / WhatsApp</span>
@@ -146,13 +146,13 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Social Action Pills */}
+            {/* Social Action Liquid Buttons */}
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <a
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
-                className="magic-panel px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong) hover:border-(--brand-primary)"
+                className="liquid-button px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <GithubIcon className="w-3.5 h-3.5" />
                 <span>GitHub</span>
@@ -162,7 +162,7 @@ export default function AboutPage() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="magic-panel px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong) hover:border-(--brand-primary)"
+                className="liquid-button px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
                 <span>LinkedIn</span>
@@ -172,7 +172,7 @@ export default function AboutPage() {
                 href={profile.x}
                 target="_blank"
                 rel="noreferrer"
-                className="magic-panel px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong) hover:border-(--brand-primary)"
+                className="liquid-button px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <TwitterXIcon className="w-3.5 h-3.5" />
                 <span>X (Twitter)</span>
@@ -180,7 +180,7 @@ export default function AboutPage() {
 
               <a
                 href={`mailto:${profile.email}`}
-                className="magic-panel px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong) hover:border-(--brand-primary)"
+                className="liquid-button px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 text-(--neutral-strong)"
               >
                 <span className="text-xs">✉️</span>
                 <span>Email</span>
@@ -203,7 +203,7 @@ export default function AboutPage() {
 
             <div className="space-y-8">
               {experiences.map((exp) => (
-                <div key={exp.company} className="space-y-2.5">
+                <div key={exp.company} className="liquid-glass p-6 rounded-2xl space-y-2.5">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="font-bold text-base text-(--neutral-strong)">
@@ -262,7 +262,7 @@ export default function AboutPage() {
 
             <div className="space-y-6">
               {education.map((edu) => (
-                <div key={edu.name} className="space-y-1.5">
+                <div key={edu.name} className="liquid-glass p-6 rounded-2xl space-y-1.5">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                     <h3 className="font-bold text-base text-(--neutral-strong)">
                       {edu.name}
@@ -293,7 +293,7 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {technicalSkills.map((skill) => (
-                <div key={skill.title} className="magic-panel p-4 rounded-xl space-y-2">
+                <div key={skill.title} className="liquid-glass p-5 rounded-2xl space-y-2">
                   <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-(--neutral-strong)">
                     {skill.title}
                   </h3>
