@@ -83,7 +83,7 @@ export default function HeaderNav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-2.5 sm:px-4 py-2 sm:py-2 rounded-full text-xs transition-all duration-200 min-h-[38px] ${
+                className={`flex-1 md:flex-initial flex items-center justify-center gap-1.5 px-2.5 sm:px-4 py-2 sm:py-2 rounded-full text-xs transition-all duration-200 min-h-9.5 ${
                   isActive
                     ? "bg-(--liquid-active-bg) border border-(--liquid-active-border) text-(--neutral-strong) shadow-sm font-semibold scale-[1.02]"
                     : "text-(--neutral-medium) hover:text-(--neutral-strong) hover:bg-(--liquid-active-bg) font-medium"
