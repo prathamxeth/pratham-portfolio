@@ -56,39 +56,6 @@ pratham-portfolio/
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 20+
-- npm / yarn / pnpm
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/prathamxeth/pratham-portfolio.git
-
-# Navigate into directory
-cd pratham-portfolio
-
-# Install dependencies
-npm install
-
-# Start local development server
-npm run dev
-```
-
-Visit `http://localhost:3000` in your browser.
-
-### Production Build & Static Export
-
-```bash
-# Build optimized static export to /out
-npm run build
-```
-
----
-
 ## 🌐 Connect
 
 - **GitHub**: [@prathamxeth](https://github.com/prathamxeth)
